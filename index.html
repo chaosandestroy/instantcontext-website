@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Context - AI Visual Recognition App</title>
+    <meta name="description" content="AI-powered visual context app. Scan anything and get instant insights with Google Lens-quality vision AI.">
+    <meta name="theme-color" content="#111418">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature {
+            padding: 25px;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            color: #9a9a9a;
+        }
+
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 50px;
+            align-items: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #111418;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.4);
+        }
+
+        .button-secondary {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .button-secondary:hover {
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .button {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">📸</div>
+            <h1>Instant Context</h1>
+            <p class="tagline">AI-Powered Visual Recognition</p>
+            <div class="status-badge">🚀 Now in Internal Testing</div>
+            <p class="description">
+                Scan any object and instantly discover what it is, where to buy it, and get detailed information. 
+                Experience Google Lens-quality vision AI with three unique narrative styles: Conversational, Technical, and Poetic.
+            </p>
+        </header>
+
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-title">Advanced Vision AI</div>
+                <div class="feature-text">Category-specific AI that identifies products, vehicles, and everyday items with high accuracy.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <div class="feature-title">Three Narrative Styles</div>
+                <div class="feature-text">Get detailed explanations in Conversational, Technical, or Poetic form—your choice.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-title">Instant Search</div>
+                <div class="feature-text">One-tap links to YouTube, Amazon, Google Search, and more for everything you scan.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Smart History</div>
+                <div class="feature-text">Searchable, persistent history of all your scans with saved narratives.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <div class="feature-title">Freemium Model</div>
+                <div class="feature-text">Free tier with 10 scans/day. Premium for unlimited scans and advanced features.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Lightning Fast</div>
+                <div class="feature-text">AI processing in under 2 seconds. Instant results without the wait.</div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <a href="https://play.google.com/apps/internaltest/4701713468482527682" class="button">
+                Join Internal Testing
+            </a>
+            <p style="color: #666; font-size: 0.95rem;">
+                Help us dial in the AI before public launch. Your feedback shapes the product.
+            </p>
+        </section>
+
+        <footer>
+            <p>© 2025 Instant Context. Developed with precision and care.</p>
+        </footer>
+    </div>
+</body>
+</html>
