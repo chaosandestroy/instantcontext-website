@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Context - Beta Access</title>
+    <style>
+        body { font-family: sans-serif; background: #111418; color: white; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; }
+        .container { max-width: 500px; width: 100%; }
+        h1 { color: #00d4ff; margin-bottom: 10px; }
+        p { color: #aaa; line-height: 1.5; margin-bottom: 30px; }
+        
+        .card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid #333; margin-bottom: 20px; text-align: left; }
+        .step-label { font-weight: bold; color: #00d4ff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        .step-desc { font-size: 0.95rem; margin-bottom: 15px; display: block; color: #ddd; }
+        
+        .btn { display: block; width: 100%; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold; font-size: 1rem; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-primary { background: #00d4ff; color: #000; }
+        .btn-primary:hover { background: #00b8dd; }
+        .btn-outline { background: transparent; border: 2px solid #444; color: #ccc; }
+        .btn-outline:hover { border-color: #666; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Beta Access</h1>
+        <p>Follow these two steps to get access to the Instant Context Closed Beta.</p>
+
+        <div class="card">
+            <span class="step-label">Step 1: The Gatekeeper</span>
+            <span class="step-desc">Google requires you to join the tester group first. Click below and hit <strong>"Ask to join group"</strong>.</span>
+            <a href="https://groups.google.com/g/instant-context-testers" target="_blank" class="btn btn-outline">Join Google Group</a>
+        </div>
+
+        <div class="card">
+            <span class="step-label">Step 2: The App</span>
+            <span class="step-desc">Once Steve approves your request (usually fast!), click below to download from the Play Store.</span>
+            <a href="https://play.google.com/apps/testing/com.instantcontext.app" target="_blank" class="btn btn-primary">Download App</a>
+        </div>
+
+        <p style="font-size: 0.8rem; margin-top: 20px; color: #666;">
+            Note: If the download link says "Not Found," it means you haven't been approved in the group yet.
+        </p>
+    </div>
+</body>
+</html>
