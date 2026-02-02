@@ -177,16 +177,22 @@
             50% { opacity: 0.3; }
         }
 
+        .logo-and-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
         .logo {
-            font-size: 80px;
-            margin-bottom: 30px;
             display: inline-block;
             animation: logoFloat 4s ease-in-out infinite;
             filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
 
         .logo img {
-            height: 120px;
+            height: 100px;
             width: auto;
             display: block;
         }
@@ -668,17 +674,19 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="status-badge">
-                <span></span> Closed Internal Testing
+            <div class="logo-and-title">
+                <div class="logo">
+                    <img src="./app-logo.png" alt="Instant Context Logo" />
+                </div>
+                <h1>Instant Context</h1>
             </div>
-            <div class="logo">
-                <img src="./app-logo.png" alt="Instant Context Logo" />
-            </div>
-            <h1>Instant Context</h1>
             <p class="tagline">Next-Gen Visual Intelligence</p>
             <p class="hero-description">
                 Powered by advanced neural networks. Point your camera at any object and instantly unlock comprehensive context, shopping options, and intelligent insights in seconds.
             </p>
+            <div class="status-badge">
+                <span></span> Closed Internal Testing
+            </div>
 
             <div class="cta-group">
                 <a href="/beta.html" class="button"><span>🚀 Join Closed Beta</span></a>
