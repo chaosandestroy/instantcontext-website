@@ -185,6 +185,12 @@
             filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
 
+        .logo img {
+            height: 120px;
+            width: auto;
+            display: block;
+        }
+
         @keyframes logoFloat {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-25px) scale(1.05); }
@@ -665,7 +671,9 @@
             <div class="status-badge">
                 <span></span> Closed Internal Testing
             </div>
-            <div class="logo">📸</div>
+            <div class="logo">
+                <img src="../assets/app-logo-canva.png" alt="Instant Context Logo" />
+            </div>
             <h1>Instant Context</h1>
             <p class="tagline">Next-Gen Visual Intelligence</p>
             <p class="hero-description">
