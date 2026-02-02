@@ -5,78 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Instant Context Privacy Policy</title>
     <style>
-      :root { --bg:#fff; --fg:#111; --muted:#666; --link:#0a84ff; }
-      body { margin: 0 auto; padding: 40px 16px; max-width: 860px; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color: var(--fg); background: var(--bg); }
-      h1,h2,h3 { line-height: 1.25; margin: 24px 0 12px; }
-      h1 { font-size: 28px; }
-      h2 { font-size: 22px; }
-      h3 { font-size: 18px; }
-      p, li { margin: 10px 0; }
-      header { margin-bottom: 24px; }
+      :root { --bg:#0f0f1e; --fg:#e0e0e0; --muted:#9a9a9a; --link:#00d4ff; --panel:#1a1a2e; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        color: var(--fg);
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 60px 20px 80px;
+        min-height: 100vh;
+      }
+      header { text-align: center; margin-bottom: 40px; }
+      .logo { font-size: 40px; margin-bottom: 16px; }
+      h1 {
+        font-size: 2.75rem;
+        background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      h2 { font-size: 1.5rem; margin: 26px 0 12px; color: #00d4ff; }
+      h3 { font-size: 1.1rem; margin: 18px 0 8px; color: #b7e9ff; }
+      p, li { margin: 10px 0; color: var(--fg); }
+      ul { padding-left: 20px; }
       .muted { color: var(--muted); }
+      .card {
+        background: rgba(0, 212, 255, 0.05);
+        border: 1px solid rgba(0, 212, 255, 0.1);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        backdrop-filter: blur(10px);
+      }
       a { color: var(--link); text-decoration: none; }
       a:hover { text-decoration: underline; }
-      footer { margin-top: 40px; font-size: 14px; color: var(--muted); }
+      footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid rgba(0, 212, 255, 0.1);
+        padding-top: 20px;
+      }
+      @media (max-width: 600px) {
+        h1 { font-size: 2.1rem; }
+        .container { padding: 40px 16px 60px; }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Instant Context Privacy Policy</h1>
-      <p class="muted">Effective date: December 27, 2025</p>
-    </header>
-    <p>Instant Context ("the App") is provided by Instant Context. This policy explains what data we collect, how we use it, and the choices you have. The App uses device capabilities (e.g., Camera, Microphone) and third‑party services such as Google AdMob, RevenueCat, and Supabase.</p>
-    <h2>Summary</h2>
-    <ul>
-      <li>Purpose: Provide core features (camera/microphone capture), display ads, manage subscriptions, and sync data you explicitly submit.</li>
-      <li>Key partners: Google AdMob (ads), RevenueCat (in‑app purchases/subscriptions), Supabase (backend data storage/processing).</li>
-      <li>Sensitive permissions: Camera and Microphone are requested to enable features you choose to use.</li>
-    </ul>
-    <h2>Data We Collect</h2>
-    <h3>1. Data you provide</h3>
-    <p>Content you capture or submit (e.g., images, audio, text queries). This remains on‑device unless you choose to upload/sync or use features that call remote APIs.</p>
-    <h3>2. Device and usage data</h3>
-    <p>App crash logs, basic diagnostics, and performance metrics.</p>
-    <h3>3. Advertising data (Google AdMob)</h3>
-    <p>AdMob may collect the Android Advertising ID (AAID), IP address, coarse location (derived from IP), device information, and ad interaction data for ad delivery and measurement. See Google’s policies: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a>.</p>
-    <h3>4. Purchase data (RevenueCat)</h3>
-    <p>RevenueCat processes purchase receipts and related metadata to validate, manage, and restore subscriptions. See RevenueCat’s privacy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.</p>
-    <h3>5. Backend data (Supabase)</h3>
-    <p>When features are used that sync or store data, Supabase processes the data you submit (e.g., account info, app content). Supabase privacy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>.</p>
-    <h2>How We Use Data</h2>
-    <ul>
-      <li>Provide and improve App functionality.</li>
-      <li>Deliver and measure advertisements.</li>
-      <li>Process purchases/subscriptions and maintain entitlements.</li>
-      <li>Diagnose and fix issues.</li>
-    </ul>
-    <h2>Sharing</h2>
-    <p>We share data with service providers listed above only to operate the App. We do not sell personal data.</p>
-    <h2>Data Retention</h2>
-    <p>User‑generated content is retained only as long as needed for the feature you use or as required by law. Ad/purchase telemetry is retained per partner policies (AdMob/RevenueCat).</p>
-    <h2>Security</h2>
-    <p>We use industry‑standard measures to protect data. No method of transmission or storage is 100% secure.</p>
-    <h2>Children’s Privacy</h2>
-    <p>The App is not directed to children under the applicable age limits and should not be used by them.</p>
-    <h2>Your Choices and Controls</h2>
-    <ul>
-      <li>Ad personalization: Limit ad personalization via device settings for Ads (Android: Settings → Google → Ads).</li>
-      <li>Camera/Microphone: Disable permissions in system settings; features depending on them will not work.</li>
-      <li>Account/data requests: Contact us to access, correct, or delete data stored with our services where applicable.</li>
-    </ul>
-    <h2>International Transfers</h2>
-    <p>Our partners may process data globally. Safeguards are applied per partner policies and applicable laws.</p>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:instantcontextapp@gmail.com">instantcontextapp@gmail.com</a></p>
-    <h2>Changes to This Policy</h2>
-    <p>We may update this policy from time to time. The latest version will be available at this URL.</p>
-    <h2>Third‑Party Links</h2>
-    <ul>
-      <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a></li>
-      <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat</a></li>
-      <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a></li>
-    </ul>
-    <footer>
-      <p>&copy; 2025 Instant Context</p>
-    </footer>
+    <div class="container">
+      <header>
+        <div class="logo">🔒</div>
+        <h1>Privacy Policy</h1>
+        <p class="muted">Effective date: December 27, 2025</p>
+      </header>
+
+      <div class="card">
+        <p>Instant Context ("the App") is provided by Instant Context. This policy explains what data we collect, how we use it, and the choices you have. The App uses device capabilities (e.g., Camera, Microphone) and third‑party services such as Google AdMob, RevenueCat, and Supabase.</p>
+      </div>
+
+      <div class="card">
+        <h2>Summary</h2>
+        <ul>
+          <li>Purpose: Provide core features (camera/microphone capture), display ads, manage subscriptions, and sync data you explicitly submit.</li>
+          <li>Key partners: Google AdMob (ads), RevenueCat (in‑app purchases/subscriptions), Supabase (backend data storage/processing).</li>
+          <li>Sensitive permissions: Camera and Microphone are requested to enable features you choose to use.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Data We Collect</h2>
+        <h3>1. Data you provide</h3>
+        <p>Content you capture or submit (e.g., images, audio, text queries). This remains on‑device unless you choose to upload/sync or use features that call remote APIs.</p>
+        <h3>2. Device and usage data</h3>
+        <p>App crash logs, basic diagnostics, and performance metrics.</p>
+        <h3>3. Advertising data (Google AdMob)</h3>
+        <p>AdMob may collect the Android Advertising ID (AAID), IP address, coarse location (derived from IP), device information, and ad interaction data for ad delivery and measurement. See Google’s policies: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a>.</p>
+        <h3>4. Purchase data (RevenueCat)</h3>
+        <p>RevenueCat processes purchase receipts and related metadata to validate, manage, and restore subscriptions. See RevenueCat’s privacy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.</p>
+        <h3>5. Backend data (Supabase)</h3>
+        <p>When features are used that sync or store data, Supabase processes the data you submit (e.g., account info, app content). Supabase privacy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>.</p>
+      </div>
+
+      <div class="card">
+        <h2>How We Use Data</h2>
+        <ul>
+          <li>Provide and improve App functionality.</li>
+          <li>Deliver and measure advertisements.</li>
+          <li>Process purchases/subscriptions and maintain entitlements.</li>
+          <li>Diagnose and fix issues.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Sharing</h2>
+        <p>We share data with service providers listed above only to operate the App. We do not sell personal data.</p>
+        <h2>Data Retention</h2>
+        <p>User‑generated content is retained only as long as needed for the feature you use or as required by law. Ad/purchase telemetry is retained per partner policies (AdMob/RevenueCat).</p>
+        <h2>Security</h2>
+        <p>We use industry‑standard measures to protect data. No method of transmission or storage is 100% secure.</p>
+        <h2>Children’s Privacy</h2>
+        <p>The App is not directed to children under the applicable age limits and should not be used by them.</p>
+      </div>
+
+      <div class="card">
+        <h2>Your Choices and Controls</h2>
+        <ul>
+          <li>Ad personalization: Limit ad personalization via device settings for Ads (Android: Settings → Google → Ads).</li>
+          <li>Camera/Microphone: Disable permissions in system settings; features depending on them will not work.</li>
+          <li>Account/data requests: Contact us to access, correct, or delete data stored with our services where applicable.</li>
+        </ul>
+        <h2>International Transfers</h2>
+        <p>Our partners may process data globally. Safeguards are applied per partner policies and applicable laws.</p>
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:instantcontextapp@gmail.com">instantcontextapp@gmail.com</a></p>
+      </div>
+
+      <div class="card">
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy from time to time. The latest version will be available at this URL.</p>
+        <h2>Third‑Party Links</h2>
+        <ul>
+          <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a></li>
+          <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat</a></li>
+          <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a></li>
+        </ul>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 Instant Context</p>
+      </footer>
+    </div>
   </body>
   </html>
