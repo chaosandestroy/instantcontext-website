@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Context - AI-Powered Visual Recognition</title>
-    <meta name="description" content="Scan any object and instantly discover what it is. AI-powered visual recognition with Google Vision technology. 5 free scans daily, watch ads for more. GDPR-compliant.">
+    <title>Instant Context - Next-Gen Visual AI Recognition</title>
+    <meta name="description" content="Advanced AI-powered visual recognition platform. Scan any object and instantly discover comprehensive context, purchasing options, and intelligent insights powered by cutting-edge neural networks.">
     <meta name="theme-color" content="#111418">
     <style>
         * {
@@ -13,244 +13,763 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 25%, #1a0f3e 50%, #0f1a35 75%, #050812 100%);
+            background-attachment: fixed;
             color: #e0e0e0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* Advanced animated background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 212, 255, 0.03) 25%, rgba(0, 212, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.03) 75%, rgba(0, 212, 255, 0.03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 212, 255, 0.03) 25%, rgba(0, 212, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.03) 75%, rgba(0, 212, 255, 0.03) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            animation: gridDrift 20s linear infinite;
+        }
+
+        @keyframes gridDrift {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .glow-orbs {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #00d4ff, transparent);
+            top: 10%;
+            left: 5%;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #0099ff, transparent);
+            top: 60%;
+            right: 5%;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #00d4ff, transparent);
+            bottom: 10%;
+            left: 30%;
+            animation: float 18s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -50px); }
+            66% { transform: translate(-20px, 30px); }
+        }
+
+        /* Staggered section animations */
+        section {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation: sectionFadeIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes sectionFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:nth-of-type(1) { animation-delay: 0s; }
+        section:nth-of-type(2) { animation-delay: 0.15s; }
+        section:nth-of-type(3) { animation-delay: 0.3s; }
+        section:nth-of-type(4) { animation-delay: 0.45s; }
+        section:nth-of-type(5) { animation-delay: 0.6s; }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 60px;
+        .hero-content {
+            max-width: 900px;
+            z-index: 3;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 50px;
+            color: #00d4ff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.1); }
+            50% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.4), inset 0 0 30px rgba(0, 212, 255, 0.15); }
+        }
+
+        .status-badge::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: statusBlink 1s ease-in-out infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 80px;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: logoFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-25px) scale(1.05); }
         }
 
         h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            font-size: 5.5rem;
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00d4ff 0%, #00f0ff 25%, #0099ff 50%, #00d4ff 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
-            font-weight: 700;
+            animation: gradientShift 4s ease infinite;
+            text-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .tagline {
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             color: #00d4ff;
-            margin-bottom: 30px;
-            font-weight: 500;
+            margin-bottom: 35px;
+            font-weight: 600;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
         }
 
-        .description {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 40px;
-            max-width: 600px;
+        .hero-description {
+            font-size: 1.2rem;
+            color: #c0c0c0;
+            margin-bottom: 60px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.8;
+            line-height: 1.9;
+            font-weight: 300;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .feature {
-            padding: 25px;
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .feature-title {
-            font-size: 1.1rem;
-            color: #00d4ff;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .feature-text {
-            font-size: 0.95rem;
-            color: #9a9a9a;
-        }
-
-        .cta-section {
+        /* CTA Group */
+        .cta-group {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 50px;
-            align-items: center;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
         }
 
         .button {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-            color: #111418;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #00d4ff 0%, #00f0ff 50%, #0099ff 100%);
+            color: #000;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
+            border-radius: 12px;
+            font-weight: 800;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.7s, height 0.7s;
+            z-index: 0;
+        }
+
+        .button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .button span {
+            position: relative;
+            z-index: 1;
         }
 
         .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.4);
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         .button-secondary {
             background: rgba(0, 212, 255, 0.1);
             color: #00d4ff;
             border: 2px solid #00d4ff;
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
         }
 
         .button-secondary:hover {
             background: rgba(0, 212, 255, 0.2);
+            border-color: #00f0ff;
+            color: #00f0ff;
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid #00d4ff;
+        /* Stats Section */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 50%, rgba(0, 212, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.15);
             border-radius: 20px;
-            color: #00d4ff;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+            margin-bottom: 100px;
         }
 
-        footer {
+        .stat {
             text-align: center;
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(0, 212, 255, 0.1);
-            color: #666;
+            animation: statIn 1s ease-out forwards;
+        }
+
+        .stat:nth-child(1) { animation-delay: 0.2s; }
+        .stat:nth-child(2) { animation-delay: 0.3s; }
+        .stat:nth-child(3) { animation-delay: 0.4s; }
+        .stat:nth-child(4) { animation-delay: 0.5s; }
+
+        @keyframes statIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #00d4ff;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
             font-size: 0.9rem;
+            color: #9a9a9a;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 20px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 80px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            position: relative;
+        }
+
+        .workflow::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.3) 50%, transparent 100%);
+            display: none;
+        }
+
+        @media (min-width: 900px) {
+            .workflow::before {
+                display: block;
+            }
+        }
+
+        .flow-step {
+            position: relative;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: stepIn 0.8s ease-out forwards;
+        }
+
+        .flow-step:nth-child(1) { animation-delay: 0.1s; }
+        .flow-step:nth-child(2) { animation-delay: 0.2s; }
+        .flow-step:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes stepIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .flow-step:hover {
+            transform: translateY(-15px);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #000;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .step-desc {
+            font-size: 1rem;
+            color: #a0a0a0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .feature {
+            padding: 40px 35px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.07) 0%, rgba(0, 212, 255, 0.01) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 18px;
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            animation: featureIn 0.8s ease-out forwards;
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.05s; }
+        .feature:nth-child(2) { animation-delay: 0.1s; }
+        .feature:nth-child(3) { animation-delay: 0.15s; }
+        .feature:nth-child(4) { animation-delay: 0.2s; }
+        .feature:nth-child(5) { animation-delay: 0.25s; }
+        .feature:nth-child(6) { animation-delay: 0.3s; }
+        .feature:nth-child(7) { animation-delay: 0.35s; }
+
+        @keyframes featureIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .feature:hover::before {
+            opacity: 1;
+        }
+
+        .feature:hover {
+            transform: translateY(-20px) scale(1.03);
+            border-color: rgba(0, 212, 255, 0.35);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.25);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.12) 0%, rgba(0, 212, 255, 0.03) 100%);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        .feature:nth-child(1) .feature-icon { animation-delay: 0s; }
+        .feature:nth-child(2) .feature-icon { animation-delay: 0.15s; }
+        .feature:nth-child(3) .feature-icon { animation-delay: 0.3s; }
+        .feature:nth-child(4) .feature-icon { animation-delay: 0.45s; }
+        .feature:nth-child(5) .feature-icon { animation-delay: 0.6s; }
+        .feature:nth-child(6) .feature-icon { animation-delay: 0.75s; }
+        .feature:nth-child(7) .feature-icon { animation-delay: 0.9s; }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .feature-title {
+            font-size: 1.35rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            color: #a0a0a0;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 80px 20px 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin: 12px 0;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .logo {
+                font-size: 60px;
             }
 
             .tagline {
                 font-size: 1.1rem;
             }
 
-            .description {
-                font-size: 1rem;
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 12px;
             }
 
             .button {
                 width: 100%;
-                max-width: 400px;
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+
+            .button-secondary {
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stats-bar {
+                gap: 20px;
+                padding: 35px 15px;
             }
         }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="cyber-grid"></div>
+    <div class="glow-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="status-badge">
+                <span></span> Closed Internal Testing
+            </div>
             <div class="logo">📸</div>
             <h1>Instant Context</h1>
-            <p class="tagline">AI-Powered Visual Recognition</p>
-            <div class="status-badge">🚀 Now in Closed Beta Testing</div>
-            <p class="description">
-                Scan any object and instantly discover what it is, where to buy it, and get detailed information. 
-                Powered by Google Cloud Vision AI with three unique narrative styles: Conversational, Technical, and Poetic.
+            <p class="tagline">Next-Gen Visual Intelligence</p>
+            <p class="hero-description">
+                Powered by advanced neural networks. Point your camera at any object and instantly unlock comprehensive context, shopping options, and intelligent insights in seconds.
             </p>
-        </header>
 
-        <section class="features">
+            <div class="cta-group">
+                <a href="/beta.html" class="button"><span>🚀 Join Closed Beta</span></a>
+                <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app" class="button button-secondary"><span>📱 View on Play Store</span></a>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-number">&lt;2s</div>
+                    <div class="stat-label">Recognition Speed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Object Categories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">AI Voices</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Possibilities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="workflow">
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Capture</div>
+                <div class="step-desc">Point your camera at any object and capture a photo directly from the app.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Analyze</div>
+                <div class="step-desc">Advanced AI processes your image and identifies objects with cutting-edge precision.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Explore</div>
+                <div class="step-desc">Get intelligent explanations and direct access to YouTube, Amazon, and more.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="features-grid">
             <div class="feature">
                 <div class="feature-icon">🤖</div>
                 <div class="feature-title">Advanced Vision AI</div>
-                <div class="feature-text">Category-specific AI that identifies products, vehicles, and everyday items with high accuracy.</div>
+                <div class="feature-text">Cutting-edge neural networks identify products, vehicles, animals, and everyday objects with exceptional accuracy powered by state-of-the-art deep learning.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">💬</div>
-                <div class="feature-title">Three Narrative Styles</div>
-                <div class="feature-text">Get detailed explanations in Conversational, Technical, or Poetic form—your choice.</div>
+                <div class="feature-title">Three AI Voices</div>
+                <div class="feature-text">Conversational for casual exploration, Technical for detailed specs, Poetic for artistic interpretations. Choose your preferred narrative style.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">🔍</div>
-                <div class="feature-title">Instant Search</div>
-                <div class="feature-text">One-tap links to YouTube, Amazon, Google Search, and more for everything you scan.</div>
+                <div class="feature-title">One-Tap Search</div>
+                <div class="feature-text">Instantly access YouTube tutorials, Amazon listings, Google Shopping, Wikipedia, and more—all integrated into one seamless workflow.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">📚</div>
-                <div class="feature-title">Smart History</div>
-                <div class="feature-text">Searchable, persistent history of all your scans with saved narratives.</div>
+                <div class="feature-title">Persistent History</div>
+                <div class="feature-text">Searchable scan history with all narratives preserved. Maintain up to 100 scans with smart retention and instant recall of any object you've ever scanned.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">💰</div>
-                <div class="feature-title">Freemium Model</div>
-                <div class="feature-text">Free tier with 5 scans/day. Watch rewarded ads for 3 bonus scans. Premium for unlimited access.</div>
+                <div class="feature-title">Flexible Pricing Model</div>
+                <div class="feature-text">5 free scans daily. Watch rewarded ads for 3 bonus scans. Premium tier unlocks unlimited access to all features without restrictions.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">⚡</div>
-                <div class="feature-title">Lightning Fast</div>
-                <div class="feature-text">AI processing in under 2 seconds. Instant results without the wait.</div>
+                <div class="feature-title">Lightning Performance</div>
+                <div class="feature-text">Sub-2-second processing times. No delays, no buffering—pure instant gratification powered by optimized cloud infrastructure and edge computing.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">🔒</div>
-                <div class="feature-title">GDPR Compliant</div>
-                <div class="feature-text">Full data export and account deletion. Your privacy is our priority.</div>
+                <div class="feature-title">Privacy by Design</div>
+                <div class="feature-text">Full GDPR compliance. Export all your data, delete your account, control your privacy. Your data is yours—we're transparent by default.</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="cta-section">
-            <a href="/beta.html" class="button">
-                Join Closed Beta (Instructions)
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app" class="button button-secondary">
-                View on Play Store
-            </a>
-            <p style="color: #666; font-size: 0.95rem; max-width: 500px; text-align: center;">
-                Join our closed beta program via Google Groups or download directly from the Play Store. 
-                Your feedback helps shape the final product!
-            </p>
-        </section>
-
-        <footer>
-            <p>© 2026 Instant Context. Developed with precision and care.</p>
-            <p style="margin-top: 10px; font-size: 0.85rem;">
-                <a href="mailto:instant-context-testers@googlegroups.com" style="color: #00d4ff; text-decoration: none;">Contact Support</a> • 
-                Version 1.0.0
-            </p>
-        </footer>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Instant Context. Engineering the future of visual intelligence.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> • 
+            <a href="mailto:support@instantcontext.app">Support</a> • 
+            <span>Version 1.0.9</span>
+        </p>
+    </footer>
 </body>
 </html>
-
