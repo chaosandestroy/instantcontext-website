@@ -318,20 +318,46 @@
         /* Stats Section */
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
-            padding: 50px 20px;
-            background: linear-gradient(90deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 50%, rgba(0, 212, 255, 0.05) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.15);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 50%, rgba(0, 212, 255, 0.08) 100%);
+            border: 2px solid rgba(0, 212, 255, 0.25);
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15), inset 0 1px 1px rgba(0, 212, 255, 0.1);
             margin-bottom: 100px;
         }
 
         .stat {
             text-align: center;
             animation: statIn 1s ease-out forwards;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+        }
+
+        .stat:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+            animation: iconFloat 2s ease-in-out infinite;
+        }
+
+        .stat:nth-child(1) .stat-icon { animation-delay: 0s; }
+        .stat:nth-child(2) .stat-icon { animation-delay: 0.5s; }
+        .stat:nth-child(3) .stat-icon { animation-delay: 1s; }
+        .stat:nth-child(4) .stat-icon { animation-delay: 1.5s; }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .stat:nth-child(1) { animation-delay: 0.2s; }
@@ -351,7 +377,7 @@
         }
 
         .stat-number {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 900;
             color: #00d4ff;
             margin-bottom: 8px;
@@ -359,11 +385,19 @@
         }
 
         .stat-label {
-            font-size: 0.9rem;
-            color: #9a9a9a;
+            font-size: 1rem;
+            color: #e0e0e0;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-weight: 600;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            font-size: 0.85rem;
+            color: #9a9a9a;
+            font-weight: 300;
+            line-height: 1.4;
         }
 
         /* How It Works */
@@ -696,20 +730,28 @@
             <!-- Stats Section -->
             <div class="stats-bar">
                 <div class="stat">
+                    <div class="stat-icon">⚡</div>
                     <div class="stat-number">&lt;2s</div>
                     <div class="stat-label">Recognition Speed</div>
+                    <div class="stat-desc">Real-time AI processing</div>
                 </div>
                 <div class="stat">
+                    <div class="stat-icon">🎯</div>
                     <div class="stat-number">1000+</div>
                     <div class="stat-label">Object Categories</div>
+                    <div class="stat-desc">Trained on millions of images</div>
                 </div>
                 <div class="stat">
+                    <div class="stat-icon">🎙️</div>
                     <div class="stat-number">3</div>
-                    <div class="stat-label">AI Voices</div>
+                    <div class="stat-label">AI Narrative Voices</div>
+                    <div class="stat-desc">Conversational • Technical • Poetic</div>
                 </div>
                 <div class="stat">
+                    <div class="stat-icon">✨</div>
                     <div class="stat-number">∞</div>
                     <div class="stat-label">Possibilities</div>
+                    <div class="stat-desc">Unlimited exploration potential</div>
                 </div>
             </div>
         </div>
