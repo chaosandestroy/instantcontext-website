@@ -1,0 +1,16 @@
+name: Price Alert Trigger
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Price Check
+        run: |
+          curl -i -X POST "${{ secrets.SUPABASE_FUNCTION_URL }}" \
+          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+          -H "Content-Type: application/json" \
+          -d '{"limit": 20, "force": false}'
