@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Context - Next-Gen Visual AI Recognition</title>
-    <meta name="description" content="Advanced AI-powered visual recognition platform. Scan any object and instantly discover comprehensive context, purchasing options, and intelligent insights powered by cutting-edge neural networks.">
+    <title>Instant Context – Your Personal Shopping Second Brain</title>
+    <meta name="description" content="Instant Context is your personal shopping second brain. Scan anything, and it remembers it — with price tracking, smart collections, and instant recall of your entire physical shopping history.">
     <meta name="theme-color" content="#111418">
     <style>
         * {
@@ -514,6 +514,86 @@
             padding: 120px 20px;
         }
 
+        /* AI Architecture Section */
+        .ai-architecture {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 20px;
+        }
+        .ai-architecture .section-subtitle {
+            text-align: center;
+            color: #9a9aaa;
+            margin-bottom: 60px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .ai-arch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .ai-arch-card {
+            padding: 40px 35px;
+            border-radius: 18px;
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-arch-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+        .ai-arch-card--vision {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        .ai-arch-card--vision:hover {
+            border-color: rgba(139, 92, 246, 0.45);
+            box-shadow: 0 30px 80px rgba(139, 92, 246, 0.2);
+        }
+        .ai-arch-card--edge {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 212, 255, 0.02) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        .ai-arch-card--edge:hover {
+            border-color: rgba(0, 212, 255, 0.45);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.2);
+        }
+        .ai-arch-card .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .ai-arch-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .ai-arch-card--vision h3 { color: #c4b5fd; }
+        .ai-arch-card--edge h3 { color: #67e8f9; }
+        .ai-arch-card p {
+            color: #b0b0c0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .ai-arch-card ul {
+            margin-top: 20px;
+            padding-left: 20px;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+        @media (max-width: 700px) {
+            .ai-arch-grid { grid-template-columns: 1fr; }
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -714,44 +794,44 @@
                 </div>
                 <h1>Instant Context</h1>
             </div>
-            <p class="tagline">Next-Gen Visual Intelligence</p>
+            <p class="tagline">Your Personal Shopping Second Brain</p>
             <p class="hero-description">
-                Powered by advanced neural networks. Point your camera at any object and instantly unlock comprehensive context, shopping options, and intelligent insights in seconds.
+                Scan anything in the real world and never lose the context again. Instant Context remembers every product you've ever looked at — what it cost, where you saw it, whether you bought it — and organizes it all so you can find it the moment you need it.
             </p>
             <div class="status-badge">
-                <span></span> Closed Internal Testing
+                <span></span> Public Beta Now Live
             </div>
 
             <div class="cta-group">
-                <a href="/beta.html" class="button"><span>🚀 Join Closed Beta</span></a>
-                <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app" class="button button-secondary"><span>📱 View on Play Store</span></a>
+                <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app" class="button"><span>🚀 Get the App</span></a>
+                <a href="#features" class="button button-secondary"><span>✨ See Features</span></a>
             </div>
 
             <!-- Stats Section -->
             <div class="stats-bar">
                 <div class="stat">
+                    <div class="stat-icon">📸</div>
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Scans Remembered</div>
+                    <div class="stat-desc">Your entire shopping history, forever searchable</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Price Tracking</div>
+                    <div class="stat-desc">Background monitoring across every item you've saved</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">🗂️</div>
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Smart Collections</div>
+                    <div class="stat-desc">Organized into projects, wishlists, and rooms</div>
+                </div>
+                <div class="stat">
                     <div class="stat-icon">⚡</div>
                     <div class="stat-number">&lt;2s</div>
-                    <div class="stat-label">Recognition Speed</div>
-                    <div class="stat-desc">Real-time AI processing</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon">🎯</div>
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Object Categories</div>
-                    <div class="stat-desc">Trained on millions of images</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon">🎙️</div>
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">AI Narrative Voices</div>
-                    <div class="stat-desc">Conversational • Technical • Poetic</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon">✨</div>
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Possibilities</div>
-                    <div class="stat-desc">Unlimited exploration potential</div>
+                    <div class="stat-label">Instant Recall</div>
+                    <div class="stat-desc">Find any past scan in seconds with natural language</div>
                 </div>
             </div>
         </div>
@@ -763,71 +843,99 @@
         <div class="workflow">
             <div class="flow-step">
                 <div class="step-number">1</div>
-                <div class="step-title">Capture</div>
-                <div class="step-desc">Point your camera at any object and capture a photo directly from the app.</div>
+                <div class="step-title">Scan</div>
+                <div class="step-desc">Point your camera at any product — in a store, at home, on a shelf. One tap captures it with full AI identification.</div>
             </div>
             <div class="flow-step">
                 <div class="step-number">2</div>
-                <div class="step-title">Analyze</div>
-                <div class="step-desc">Advanced AI processes your image and identifies objects with cutting-edge precision.</div>
+                <div class="step-title">Remember</div>
+                <div class="step-desc">It's saved to your personal history instantly — with the product name, price context, store, and the date you saw it.</div>
             </div>
             <div class="flow-step">
                 <div class="step-number">3</div>
-                <div class="step-title">Explore</div>
-                <div class="step-desc">Get intelligent explanations and direct access to YouTube, Amazon, and more.</div>
+                <div class="step-title">Recall</div>
+                <div class="step-desc">Search your entire history in plain language, track price drops over time, and organize everything into smart collections.</div>
             </div>
         </div>
     </section>
 
     <!-- Features -->
-    <section class="features-section">
-        <h2 class="section-title">Powerful Features</h2>
+    <section id="features" class="features-section">
+        <h2 class="section-title">Built for Shopping Memory</h2>
         <div class="features-grid">
             <div class="feature">
-                <div class="feature-icon">🤖</div>
-                <div class="feature-title">Advanced Vision AI</div>
-                <div class="feature-text">Cutting-edge neural networks identify products, vehicles, animals, and everyday objects with exceptional accuracy powered by state-of-the-art deep learning.</div>
+                <div class="feature-icon">✅</div>
+                <div class="feature-title">Mark as Purchased</div>
+                <div class="feature-text">A dedicated layer on top of your scan history to track what you actually bought, where you bought it, and how much you paid. No more guessing what you spent at that hardware store last month.</div>
             </div>
             <div class="feature">
-                <div class="feature-icon">💬</div>
-                <div class="feature-title">Three AI Voices</div>
-                <div class="feature-text">Conversational for casual exploration, Technical for detailed specs, Poetic for artistic interpretations. Choose your preferred narrative style.</div>
+                <div class="feature-icon">🗂️</div>
+                <div class="feature-title">Smart Collections</div>
+                <div class="feature-text">Group your scans into project folders — Kitchen Remodel, Wishlist, Holiday Shopping, Office Setup. Build a visual reference library that keeps your research organized by context, not just date.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <div class="feature-title">Price History Timelines</div>
+                <div class="feature-text">Set a price alert and Instant Context watches in the background. When the price drops, you'll know. See the full price history visualized as a timeline so you can spot patterns and buy at the right moment.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">🔍</div>
-                <div class="feature-title">One-Tap Search</div>
-                <div class="feature-text">Instantly access YouTube tutorials, Amazon listings, Google Shopping, Wikipedia, and more—all integrated into one seamless workflow.</div>
+                <div class="feature-title">Advanced Search</div>
+                <div class="feature-text">Ask your history in plain language — "blue sofa I scanned at IKEA" or "power tools under $100." Full-text search across everything you've ever captured, not just product names.</div>
             </div>
             <div class="feature">
-                <div class="feature-icon">📚</div>
-                <div class="feature-title">Persistent History</div>
-                <div class="feature-text">Searchable scan history with all narratives preserved. Maintain up to 100 scans with smart retention and instant recall of any object you've ever scanned.</div>
+                <div class="feature-icon">🧾</div>
+                <div class="feature-title">Receipt Intelligence</div>
+                <div class="feature-text">Scan a receipt and Instant Context extracts the store, date, every line item, and the total — automatically. Your physical purchases become a structured, searchable record without any manual entry.</div>
             </div>
             <div class="feature">
-                <div class="feature-icon">💰</div>
-                <div class="feature-title">Flexible Pricing Model</div>
-                <div class="feature-text">5 free scans daily. Watch rewarded ads for 3 bonus scans. Premium tier unlocks unlimited access to all features without restrictions.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Lightning Performance</div>
-                <div class="feature-text">Sub-2-second processing times. No delays, no buffering—pure instant gratification powered by optimized cloud infrastructure and edge computing.</div>
+                <div class="feature-icon">🤖</div>
+                <div class="feature-title">Precise AI Identification</div>
+                <div class="feature-text">Dual Gemini AI performs pixel-level analysis to identify the exact product — not just the category. It knows the difference between a Fenix 8 and a Fenix 7, because the details matter when you're tracking price history.</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">🔒</div>
                 <div class="feature-title">Privacy by Design</div>
-                <div class="feature-text">Full GDPR compliance. Export all your data, delete your account, control your privacy. Your data is yours—we're transparent by default.</div>
+                <div class="feature-text">Your scan history is yours. Full data export, account deletion, and GDPR compliance built in from day one. We don't sell your shopping habits — we help you understand them.</div>
             </div>
+        </div>
+    </section>
+
+    <!-- Memory Architecture -->
+    <section id="ai-architecture" class="ai-architecture">
+        <h2 class="section-title">Built to Remember</h2>
+        <p class="section-subtitle">Two AI layers work together — one to identify what you're looking at with pixel-level precision, one to keep your entire shopping history organized, searchable, and useful over time.</p>
+        <div class="ai-arch-grid">
+            <article class="ai-arch-card ai-arch-card--vision">
+                <div class="card-icon">🧠</div>
+                <h3>Identification Layer</h3>
+                <p>Gemini Vision performs a pixel-level audit on every scan — analyzing product details, OCR text, logos, and visual structure to nail the exact product, not just the category. Precise identification is the foundation that makes price tracking and history search actually useful.</p>
+                <ul>
+                    <li>Brand + model + generation precision</li>
+                    <li>OCR-assisted product code extraction</li>
+                    <li>Receipt parsing with line-item accuracy</li>
+                </ul>
+            </article>
+            <article class="ai-arch-card ai-arch-card--edge">
+                <div class="card-icon">💾</div>
+                <h3>Memory Layer</h3>
+                <p>Every scan is persisted to your personal Supabase history with full-text search indexing. Background price monitoring runs on a scheduled cadence against live shopping APIs, so your alerts are always fresh — without draining your battery or data.</p>
+                <ul>
+                    <li>Full-text search across your entire history</li>
+                    <li>Scheduled background price polling</li>
+                    <li>Offline-first with automatic cloud sync</li>
+                </ul>
+            </article>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Instant Context. Engineering the future of visual intelligence.</p>
+        <p>© 2026 Instant Context. Your shopping history, perfectly remembered.</p>
         <p>
             <a href="/privacy-policy.html">Privacy Policy</a> • 
             <a href="mailto:support@instantcontext.app">Support</a> • 
-            <span>Version 1.0.9</span>
+            <span>Version 1.0.87</span>
         </p>
     </footer>
 </body>
