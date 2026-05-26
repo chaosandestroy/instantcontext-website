@@ -3,39 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instant Context Ã¢â‚¬â€ Point your camera. We remember the rest.</title>
-  <meta name="description" content="Instant Context remembers every product and receipt you scan. Track prices, stay organized, and get notified the moment a price drops Ã¢â‚¬â€ without typing a thing.">
+  <title>Instant Context &#8212; Point your camera. We remember the rest.</title>
+  <meta name="description" content="Instant Context remembers every product and receipt you scan. Track prices, stay organized, and find anything again in seconds &#8212; without typing a thing.">
   <meta name="theme-color" content="#060810">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* =====================================================================
+    /* =============================================================
        RESET & BASE
-    ===================================================================== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    ============================================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black:      #060810;
-      --surface:    #0c1120;
-      --surface-2:  #111827;
-      --border:     rgba(255,255,255,0.07);
-      --border-hi:  rgba(0,212,255,0.25);
-      --cyan:       #00d4ff;
-      --cyan-dim:   rgba(0,212,255,0.15);
-      --cyan-glow:  rgba(0,212,255,0.08);
-      --red:        #ff3b5c;
-      --text-hi:    #f0f4ff;
-      --text-mid:   #8892a4;
-      --text-lo:    #4a5568;
-      --mono:       'JetBrains Mono', 'Courier New', monospace;
-      --sans:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --radius:     10px;
-      --radius-lg:  16px;
+      --black:     #060810;
+      --surface:   #0c1120;
+      --surface-2: #111827;
+      --border:    rgba(255,255,255,0.07);
+      --border-hi: rgba(0,212,255,0.25);
+      --cyan:      #00d4ff;
+      --cyan-dim:  rgba(0,212,255,0.15);
+      --cyan-glow: rgba(0,212,255,0.08);
+      --red:       #ff3b5c;
+      --text-hi:   #f0f4ff;
+      --text-mid:  #8892a4;
+      --text-lo:   #4a5568;
+      --mono:      'JetBrains Mono', 'Courier New', monospace;
+      --sans:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:    10px;
+      --radius-lg: 16px;
     }
 
     html { scroll-behavior: smooth; }
@@ -49,9 +45,9 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* =====================================================================
-       STATIC GRID BACKGROUND Ã¢â‚¬â€ no drift, no blur
-    ===================================================================== */
+    /* =============================================================
+       GRID BACKGROUND
+    ============================================================= */
     .grid-bg {
       position: fixed;
       inset: 0;
@@ -63,9 +59,9 @@
       background-size: 48px 48px;
     }
 
-    /* =====================================================================
-       LAYOUT WRAPPERS
-    ===================================================================== */
+    /* =============================================================
+       LAYOUT
+    ============================================================= */
     .wrap {
       position: relative;
       z-index: 1;
@@ -74,9 +70,9 @@
       padding: 0 24px;
     }
 
-    /* =====================================================================
+    /* =============================================================
        NAV
-    ===================================================================== */
+    ============================================================= */
     nav {
       position: sticky;
       top: 0;
@@ -103,10 +99,7 @@
       text-decoration: none;
     }
 
-    .nav-brand img {
-      height: 28px;
-      width: auto;
-    }
+    .nav-brand img { height: 28px; width: auto; }
 
     .nav-brand-name {
       font-size: 0.95rem;
@@ -138,15 +131,14 @@
       border-radius: var(--radius);
       font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.2px;
       transition: opacity 0.15s;
     }
 
     .nav-cta:hover { opacity: 0.85; }
 
-    /* =====================================================================
-       SCAN LINE ANIMATION Ã¢â‚¬â€ used in hero only, crisp
-    ===================================================================== */
+    /* =============================================================
+       ANIMATIONS
+    ============================================================= */
     @keyframes scanLine {
       0%   { top: 0; opacity: 0; }
       5%   { opacity: 1; }
@@ -164,9 +156,9 @@
       50%       { opacity: 0; }
     }
 
-    /* =====================================================================
+    /* =============================================================
        HERO
-    ===================================================================== */
+    ============================================================= */
     .hero {
       position: relative;
       z-index: 1;
@@ -247,14 +239,10 @@
       border-radius: var(--radius);
       font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.2px;
       transition: opacity 0.15s, transform 0.15s;
     }
 
-    .btn-primary:hover {
-      opacity: 0.88;
-      transform: translateY(-1px);
-    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
     .btn-secondary {
       display: inline-flex;
@@ -268,7 +256,6 @@
       font-size: 0.9rem;
       font-weight: 600;
       background: var(--cyan-glow);
-      letter-spacing: 0.2px;
       transition: background 0.15s, border-color 0.15s, transform 0.15s;
     }
 
@@ -278,7 +265,9 @@
       transform: translateY(-1px);
     }
 
-    /* ---- Phone mockup right column ---- */
+    /* =============================================================
+       PHONE MOCKUP
+    ============================================================= */
     .hero-mockup {
       position: relative;
       display: flex;
@@ -293,9 +282,7 @@
       border: 1px solid rgba(255,255,255,0.12);
       background: var(--surface);
       overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(0,212,255,0.12),
-        0 32px 80px rgba(0,0,0,0.6);
+      box-shadow: 0 0 0 1px rgba(0,212,255,0.12), 0 32px 80px rgba(0,0,0,0.6);
       animation: fadeUp 0.8s 0.3s both;
     }
 
@@ -306,7 +293,6 @@
       background: var(--black);
     }
 
-    /* Scan sweep line */
     .scan-sweep {
       position: absolute;
       left: 0;
@@ -316,14 +302,12 @@
       animation: scanLine 3s ease-in-out infinite;
     }
 
-    /* Corner brackets on mockup */
     .corner { position: absolute; width: 14px; height: 14px; }
     .corner-tl { top: 12px; left: 12px; border-top: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); }
     .corner-tr { top: 12px; right: 12px; border-top: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); }
     .corner-bl { bottom: 12px; left: 12px; border-bottom: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); }
     .corner-br { bottom: 12px; right: 12px; border-bottom: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); }
 
-    /* Data cards inside mockup */
     .mock-header {
       font-family: var(--mono);
       font-size: 0.55rem;
@@ -381,23 +365,10 @@
       border-radius: 3px;
     }
 
-    .mock-badge-active {
-      background: rgba(0,212,255,0.12);
-      color: var(--cyan);
-      border: 1px solid rgba(0,212,255,0.3);
-    }
-
-    .mock-badge-drop {
-      background: rgba(255,59,92,0.12);
-      color: var(--red);
-      border: 1px solid rgba(255,59,92,0.3);
-    }
-
-    .mock-badge-bought {
-      background: rgba(74,222,128,0.1);
-      color: #4ade80;
-      border: 1px solid rgba(74,222,128,0.25);
-    }
+    .mock-badge-active  { background: rgba(0,212,255,0.12); color: var(--cyan); border: 1px solid rgba(0,212,255,0.3); }
+    .mock-badge-drop    { background: rgba(255,59,92,0.12);  color: var(--red);  border: 1px solid rgba(255,59,92,0.3); }
+    .mock-badge-bought  { background: rgba(74,222,128,0.1);  color: #4ade80;     border: 1px solid rgba(74,222,128,0.25); }
+    .mock-badge-collect { background: rgba(168,85,247,0.12); color: #c084fc;     border: 1px solid rgba(168,85,247,0.3); }
 
     .mock-alert {
       margin-top: 12px;
@@ -411,14 +382,11 @@
       line-height: 1.5;
     }
 
-    .mock-alert strong {
-      color: var(--cyan);
-      font-family: var(--mono);
-    }
+    .mock-alert strong { color: var(--cyan); font-family: var(--mono); }
 
-    /* =====================================================================
+    /* =============================================================
        STATS ROW
-    ===================================================================== */
+    ============================================================= */
     .stats-section {
       position: relative;
       z-index: 1;
@@ -441,7 +409,6 @@
     }
 
     .stat-item:last-child { border-right: none; }
-
     .stat-item:nth-child(1) { animation-delay: 0.1s; }
     .stat-item:nth-child(2) { animation-delay: 0.2s; }
     .stat-item:nth-child(3) { animation-delay: 0.3s; }
@@ -456,15 +423,11 @@
       margin-bottom: 6px;
     }
 
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--text-mid);
-      font-weight: 500;
-    }
+    .stat-label { font-size: 0.82rem; color: var(--text-mid); font-weight: 500; }
 
-    /* =====================================================================
-       HOW IT WORKS
-    ===================================================================== */
+    /* =============================================================
+       SECTIONS
+    ============================================================= */
     .section {
       position: relative;
       z-index: 1;
@@ -498,6 +461,9 @@
       margin-bottom: 56px;
     }
 
+    /* =============================================================
+       HOW IT WORKS STEPS
+    ============================================================= */
     .steps-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -533,15 +499,46 @@
       margin-bottom: 10px;
     }
 
-    .step-text {
-      font-size: 0.9rem;
-      color: var(--text-mid);
-      line-height: 1.7;
+    .step-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* =============================================================
+       USE CASES (replaces shopping-only framing)
+    ============================================================= */
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    /* =====================================================================
-       FEATURES
-    ===================================================================== */
+    .usecase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .usecase-card:hover { border-color: var(--border-hi); background: var(--surface-2); }
+
+    .usecase-icon {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .usecase-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-hi);
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .usecase-text { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* =============================================================
+       FEATURES GRID
+    ============================================================= */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -561,13 +558,10 @@
 
     .feature-card:hover { background: var(--surface-2); }
 
-    /* Cyan accent line on hover */
     .feature-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 1px;
       background: var(--cyan);
       transform: scaleX(0);
@@ -599,22 +593,14 @@
       opacity: 0.6;
     }
 
-    /* Coming Soon variant Ã¢â‚¬â€ orange/amber accent instead of cyan */
     .feature-tag-soon {
       color: #f59e0b;
     }
 
-    .feature-tag-soon::before {
-      background: #f59e0b;
-    }
+    .feature-tag-soon::before { background: #f59e0b; }
 
-    .feature-card:has(.feature-tag-soon) {
-      opacity: 0.7;
-    }
-
-    .feature-card:has(.feature-tag-soon):hover {
-      opacity: 1;
-    }
+    .feature-card:has(.feature-tag-soon) { opacity: 0.7; }
+    .feature-card:has(.feature-tag-soon):hover { opacity: 1; }
 
     .feature-name {
       font-size: 1.05rem;
@@ -624,20 +610,13 @@
       margin-bottom: 10px;
     }
 
-    .feature-desc {
-      font-size: 0.875rem;
-      color: var(--text-mid);
-      line-height: 1.75;
-    }
+    .feature-desc { font-size: 0.875rem; color: var(--text-mid); line-height: 1.75; }
 
-    /* Wide card spans two columns */
-    .feature-wide {
-      grid-column: span 2;
-    }
+    .feature-wide { grid-column: span 2; }
 
-    /* =====================================================================
-       TECH LAYER (replaces old AI architecture)
-    ===================================================================== */
+    /* =============================================================
+       HOW IT WORKS TECH
+    ============================================================= */
     .tech-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -672,19 +651,9 @@
       margin-bottom: 12px;
     }
 
-    .tech-card p {
-      font-size: 0.9rem;
-      color: var(--text-mid);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
+    .tech-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
 
-    .tech-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .tech-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 
     .tech-list li {
       display: flex;
@@ -695,16 +664,16 @@
     }
 
     .tech-list li::before {
-      content: 'Ã¢â€â‚¬';
+      content: '\2014';
       color: var(--cyan);
       font-family: var(--mono);
       font-size: 0.7rem;
       flex-shrink: 0;
     }
 
-    /* =====================================================================
-       PRICING / TIERS
-    ===================================================================== */
+    /* =============================================================
+       PRICING
+    ============================================================= */
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -745,11 +714,7 @@
       margin-bottom: 4px;
     }
 
-    .price-period {
-      font-size: 0.8rem;
-      color: var(--text-lo);
-      margin-bottom: 24px;
-    }
+    .price-period { font-size: 0.8rem; color: var(--text-lo); margin-bottom: 24px; }
 
     .price-list {
       list-style: none;
@@ -768,16 +733,16 @@
     }
 
     .price-list li::before {
-      content: 'Ã¢Å“â€œ';
+      content: '\2713';
       color: var(--cyan);
       font-size: 0.75rem;
       font-weight: 700;
       flex-shrink: 0;
     }
 
-    /* =====================================================================
+    /* =============================================================
        FOOTER
-    ===================================================================== */
+    ============================================================= */
     footer {
       position: relative;
       z-index: 1;
@@ -795,29 +760,11 @@
       gap: 20px;
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    .footer-brand img { height: 22px; width: auto; opacity: 0.7; }
+    .footer-name { font-size: 0.85rem; font-weight: 600; color: var(--text-mid); }
 
-    .footer-brand img {
-      height: 22px;
-      width: auto;
-      opacity: 0.7;
-    }
-
-    .footer-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-mid);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
 
     .footer-links a {
       font-size: 0.82rem;
@@ -835,63 +782,37 @@
       letter-spacing: 0.5px;
     }
 
-    /* =====================================================================
+    /* =============================================================
        RESPONSIVE
-    ===================================================================== */
+    ============================================================= */
     @media (max-width: 860px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        text-align: center;
-      }
-
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
       .hero-kicker { justify-content: center; }
       .hero-cta-row { justify-content: center; }
-
-      .hero-mockup {
-        order: -1;
-      }
-
+      .hero-mockup { order: -1; }
       .mockup-frame { width: 220px; }
       .mockup-screen { min-height: 380px; }
-
-      .stats-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-
+      .stats-inner { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
       .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
       .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
-
       .steps-row { grid-template-columns: 1fr; }
       .step { border-bottom: 1px solid var(--border); }
       .step:last-child { border-bottom: none; }
-
+      .usecases-grid { grid-template-columns: 1fr 1fr; }
       .features-grid { grid-template-columns: 1fr; }
       .feature-wide { grid-column: span 1; }
-
       .tech-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
     }
 
     @media (max-width: 560px) {
       .nav-pill { display: none; }
-
       .hero { padding: 80px 24px 60px; }
-
-      .stats-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .stat-item { padding: 24px 16px; }
-
       .section { padding: 72px 24px; }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
+      .stat-item { padding: 24px 16px; }
+      .usecases-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
   </style>
 </head>
@@ -899,7 +820,7 @@
 
   <div class="grid-bg"></div>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ NAV Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- NAV -->
   <nav>
     <div class="nav-inner">
       <a href="/" class="nav-brand">
@@ -914,24 +835,24 @@
     </div>
   </nav>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ HERO Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
 
       <div>
-        <div class="hero-kicker">Open Beta Ã‚Â· Android</div>
+        <div class="hero-kicker">Open Beta &mdash; Android</div>
         <h1>Point your camera.<br><em>We remember the rest.</em></h1>
         <p class="hero-sub">
-          Scan anything in a store Ã¢â‚¬â€ a product, a price tag, a receipt Ã¢â‚¬â€ and the app
-          saves it automatically. No typing. It keeps track of prices while you sleep
-          and tells you when the right moment to buy arrives.
+          See something in a store, on a shelf, or on a receipt? One tap and the app
+          saves it for good. Search it, track its price, organize it into a project
+          folder, or just find it again when you need it. No typing required.
         </p>
         <div class="hero-cta-row">
           <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
              class="btn-primary" target="_blank" rel="noopener">
-            Ã¢â€“Â¶&nbsp; Google Play
+            Google Play
           </a>
-          <a href="#" class="btn-secondary" aria-label="iOS App Store Ã¢â‚¬â€ coming soon">
+          <a href="#" class="btn-secondary" aria-label="iOS App Store, coming soon">
             App Store &nbsp;<span style="font-family:var(--mono);font-size:0.72rem;opacity:0.6">Soon</span>
           </a>
         </div>
@@ -950,11 +871,11 @@
             <div class="mock-header">// Scan History</div>
 
             <div class="mock-card">
-              <div class="mock-card-label">Product</div>
-              <div class="mock-card-name">Salt &amp; Pepper Grinder Set</div>
+              <div class="mock-card-label">Home &mdash; Kitchen Remodel</div>
+              <div class="mock-card-name">Delta Faucet RP46074</div>
               <div class="mock-price-row">
-                <span class="mock-price">$21.99</span>
-                <span class="mock-badge mock-badge-active">Active</span>
+                <span class="mock-price">$34.99</span>
+                <span class="mock-badge mock-badge-collect">Kitchen</span>
               </div>
             </div>
 
@@ -963,22 +884,22 @@
               <div class="mock-card-name">Sony WH-1000XM5</div>
               <div class="mock-price-row">
                 <span class="mock-price">$279.99</span>
-                <span class="mock-badge mock-badge-drop">Ã¢Ë†â€™18%</span>
+                <span class="mock-badge mock-badge-drop">-18%</span>
               </div>
             </div>
 
             <div class="mock-card">
-              <div class="mock-card-label">Receipt Ã‚Â· Wayfair</div>
-              <div class="mock-card-name">Accent Chair Ã¢â‚¬â€ Ivory</div>
+              <div class="mock-card-label">Receipt &mdash; Home Depot</div>
+              <div class="mock-card-name">Paint + Supplies</div>
               <div class="mock-price-row">
-                <span class="mock-price">$349.00</span>
+                <span class="mock-price">$147.62</span>
                 <span class="mock-badge mock-badge-bought">Bought</span>
               </div>
             </div>
 
             <div class="mock-alert">
-              <strong>PRICE DROP</strong>&nbsp; Target met on Sony WH-1000XM5
-              at Best Buy Ã‚Â· <strong>$279.99</strong>
+              <strong>PRICE DROP</strong> &mdash; Sony WH-1000XM5
+              hit your target at Best Buy &mdash; <strong>$279.99</strong>
             </div>
           </div>
         </div>
@@ -987,12 +908,12 @@
     </div>
   </section>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ STATS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- STATS -->
   <div class="stats-section">
     <div class="stats-inner">
       <div class="stat-item">
         <div class="stat-num">5/day</div>
-        <div class="stat-label">Free scans Ã‚Â· Unlimited on Pro</div>
+        <div class="stat-label">Free scans &mdash; unlimited on Pro</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">&lt;2s</div>
@@ -1004,56 +925,123 @@
       </div>
       <div class="stat-item">
         <div class="stat-num">100%</div>
-        <div class="stat-label">Your data, no selling</div>
+        <div class="stat-label">Your data, never sold</div>
       </div>
     </div>
   </div>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ HOW IT WORKS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- WHAT YOU CAN DO -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-title">Three taps. Done.</h2>
+      <div class="section-label">What It's For</div>
+      <h2 class="section-title">Not just shopping. Anything you scan.</h2>
       <p class="section-sub">
-        No typing. No copying product names. Just point, scan, and walk away.
+        The camera is the input. What you do with it is up to you.
       </p>
 
-      <div class="steps-row">
-        <div class="step">
-          <div class="step-num">01 Ã¢â‚¬â€ SCAN</div>
-          <div class="step-title">Point at anything</div>
-          <div class="step-text">
-            Product on a shelf, price tag on a clearance rack, receipt on the
-            counter Ã¢â‚¬â€ one tap and it's saved.
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <span class="usecase-icon">&#127968;</span>
+          <div class="usecase-title">Home Projects</div>
+          <div class="usecase-text">
+            Scan fixtures, paint colors, tile samples, or appliances in the store.
+            Build a saved reference list for your kitchen, bathroom, or any room
+            you're working on &#8212; so nothing gets lost between trips.
           </div>
         </div>
-        <div class="step">
-          <div class="step-num">02 Ã¢â‚¬â€ IDENTIFY</div>
-          <div class="step-title">The app figures out what it is</div>
-          <div class="step-text">
-            It reads the label, the text, and the packaging to get the exact
-            product name, brand, and current going price.
+        <div class="usecase-card">
+          <span class="usecase-icon">&#128200;</span>
+          <div class="usecase-title">Price Research</div>
+          <div class="usecase-text">
+            Set a target price on anything and the app watches in the background.
+            You get a notification the moment the price drops to your number &#8212;
+            no refreshing, no checking manually.
           </div>
         </div>
-        <div class="step">
-          <div class="step-num">03 Ã¢â‚¬â€ TRACK</div>
-          <div class="step-title">It watches while you don't</div>
-          <div class="step-text">
-            Price checks run every 15 minutes in the background. The moment
-            the price hits your target, you get a notification.
+        <div class="usecase-card">
+          <span class="usecase-icon">&#129534;</span>
+          <div class="usecase-title">Receipt Tracking</div>
+          <div class="usecase-text">
+            Scan a paper receipt and every line item gets saved automatically.
+            Store, date, totals &#8212; all of it. No manual entry, no lost receipts
+            stuffed in a drawer.
+          </div>
+        </div>
+        <div class="usecase-card">
+          <span class="usecase-icon">&#128230;</span>
+          <div class="usecase-title">What You Actually Bought</div>
+          <div class="usecase-text">
+            Mark any item as purchased with where you bought it and what you paid.
+            Builds a real record of your spending &#8212; not just what you looked at.
+          </div>
+        </div>
+        <div class="usecase-card">
+          <span class="usecase-icon">&#128736;</span>
+          <div class="usecase-title">Tools &amp; Equipment</div>
+          <div class="usecase-text">
+            Scan a tool at a job site, a part number on a machine, or a label on
+            equipment. The app identifies it exactly so you can find it again or
+            look up a replacement.
+          </div>
+        </div>
+        <div class="usecase-card">
+          <span class="usecase-icon">&#127873;</span>
+          <div class="usecase-title">Gift &amp; Wishlist Planning</div>
+          <div class="usecase-text">
+            Scan anything you want to remember as a gift idea. Organize by person
+            or occasion in a collection. Set a price alert so you buy at the right
+            time, not just any time.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ FEATURES Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- HOW IT WORKS -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three taps. Done.</h2>
+      <p class="section-sub">
+        No typing. No copying names out of your head. Just point, scan, and walk away.
+      </p>
+
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-num">01 &mdash; SCAN</div>
+          <div class="step-title">Point at anything</div>
+          <div class="step-text">
+            Product on a shelf, price tag on a rack, receipt on a counter &#8212;
+            one tap and it's saved.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02 &mdash; IDENTIFY</div>
+          <div class="step-title">The app figures it out</div>
+          <div class="step-text">
+            It reads the label, text, and packaging to get the exact name, brand,
+            and model &#8212; not just a rough category.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03 &mdash; TRACK</div>
+          <div class="step-title">It works while you don't</div>
+          <div class="step-text">
+            Price checks run every 15 minutes automatically. The moment a price
+            hits your target, you get a notification.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
   <section id="features" class="section" style="padding-top:0;">
     <div class="wrap">
       <div class="section-label">Features</div>
       <h2 class="section-title">Everything in one place.</h2>
       <p class="section-sub">
-        For anyone who shops around before buying and keeps losing track of what they found.
+        For anyone who looks at things before they buy, and keeps losing track of what they found.
       </p>
 
       <div class="features-grid">
@@ -1062,9 +1050,10 @@
           <div class="feature-tag">Price Tracking</div>
           <div class="feature-name">Price History Timelines</div>
           <div class="feature-desc">
-            Tell the app what you're willing to pay. It checks the price every
-            15 minutes and shows you a chart of how the price has moved over
-            time. When it hits your number, you get a notification. Simple as that.
+            Tell the app what you're willing to pay. It checks every 15 minutes
+            and builds a chart of how the price has moved over time. When it hits
+            your number, you get a push notification. See the full history so you
+            know whether today's price is actually a deal or just average.
           </div>
         </div>
 
@@ -1074,7 +1063,7 @@
           <div class="feature-desc">
             Group scans into folders like "Kitchen Remodel" or "BBQ Gear."
             Long-press any scan to add it. Filter your whole history down to
-            one project with a single tap.
+            one project in a single tap.
           </div>
         </div>
 
@@ -1091,18 +1080,27 @@
           <div class="feature-tag">Purchase Tracking</div>
           <div class="feature-name">Mark as Purchased</div>
           <div class="feature-desc">
-            When you buy something, mark it. The app logs where you bought it,
-            what you paid, and when Ã¢â‚¬â€ so you have a real record of what you've
-            spent, not just what you looked at.
+            When you buy something, mark it. Log the retailer, price, and date.
+            Builds a real record of what you've actually spent &#8212; separate from
+            items you're still watching.
           </div>
         </div>
 
         <div class="feature-card">
-          <div class="feature-tag feature-tag-soon">Coming Soon</div>
+          <div class="feature-tag">Search</div>
+          <div class="feature-name">Search Your History</div>
+          <div class="feature-desc">
+            Type whatever you remember &#8212; "blue sofa from IKEA" or "tools under
+            $100." It searches everything you've ever scanned.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag coming-soon-tag feature-tag-soon">Coming Soon</div>
           <div class="feature-name">Batch Scanning</div>
           <div class="feature-desc">
             Scan a whole shelf of products in one session instead of one at a
-            time. Review everything when you're done shopping.
+            time. Review everything when you're done.
           </div>
         </div>
 
@@ -1119,17 +1117,8 @@
           <div class="feature-tag feature-tag-soon">Coming Soon</div>
           <div class="feature-name">More Languages &amp; Themes</div>
           <div class="feature-desc">
-            Support for additional languages and custom color themes is on the
-            way. The app will work the way you want it to look.
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-tag">Search</div>
-          <div class="feature-name">Search Your History</div>
-          <div class="feature-desc">
-            Type whatever you remember Ã¢â‚¬â€ "blue sofa from IKEA" or "tools under
-            $100." It searches everything you've ever scanned.
+            Support for additional languages and custom color themes. The app will
+            work the way you want it to look.
           </div>
         </div>
 
@@ -1137,14 +1126,14 @@
     </div>
   </section>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ TECH LAYER Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- HOW IT ACTUALLY WORKS -->
   <section class="section" style="padding-top:0;">
     <div class="wrap">
       <div class="section-label">How It Actually Works</div>
       <h2 class="section-title">Fast and accurate. Not just flashy.</h2>
       <p class="section-sub">
-        The app does two things well: it figures out exactly what you're looking at,
-        and it keeps that information safe and searchable for as long as you need it.
+        Two things working together: it figures out exactly what you scanned,
+        and keeps it safe and searchable for as long as you need it.
       </p>
 
       <div class="tech-grid">
@@ -1153,12 +1142,12 @@
           <h3>It gets the details right</h3>
           <p>
             The app reads labels, text printed on packaging, logos, and product
-            structure to get the exact name and model Ã¢â‚¬â€ not just "headphones" or
-            "coffee maker." That precision is what makes the price history
-            actually useful.
+            structure to get the exact name and model &#8212; not just "headphones"
+            or "coffee maker." That precision is what makes price history and
+            search actually useful.
           </p>
           <ul class="tech-list">
-            <li>Brand, model, and version Ã¢â‚¬â€ not just category</li>
+            <li>Brand, model, and version &#8212; not just the category</li>
             <li>Reads barcodes and product codes from the label</li>
             <li>Pulls every line item off a paper receipt</li>
           </ul>
@@ -1167,23 +1156,23 @@
           <div class="tech-card-label">Where It Saves</div>
           <h3>Your history goes with you, everywhere</h3>
           <p>
-            Everything you scan saves to your private account automatically. It
-            works without Wi-Fi and syncs when you're back online. Price checks
-            run in the background on a schedule Ã¢â‚¬â€ your phone doesn't need to be
+            Everything saves to your private account automatically. It works
+            without Wi-Fi and syncs when you're back online. Price checks run
+            on a schedule in the background &#8212; your phone doesn't need to be
             open for it to work.
           </p>
           <ul class="tech-list">
             <li>Works offline, syncs when you reconnect</li>
             <li>Price checks every 15 minutes, automatically</li>
-            <li>Checks more often the closer a price gets to your target</li>
-            <li>Your data stays yours Ã¢â‚¬â€ export or delete any time</li>
+            <li>Checks more often the closer a price is to your target</li>
+            <li>Your data stays yours &#8212; export or delete any time</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ PRICING Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- PRICING -->
   <section class="section" style="padding-top:0;" id="pricing">
     <div class="wrap">
       <div class="section-label">Pricing</div>
@@ -1200,8 +1189,8 @@
             <li>3 active price alerts</li>
             <li>100 scans in history</li>
             <li>Smart Collections</li>
-            <li>Receipt Intelligence</li>
-            <li>Advanced Search</li>
+            <li>Receipt Scanning</li>
+            <li>Search your history</li>
           </ul>
           <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
              class="btn-secondary" style="width:100%;justify-content:center;"
@@ -1213,14 +1202,13 @@
         <div class="price-card price-card-featured">
           <div class="price-tier">Pro</div>
           <div class="price-amount">$4.99</div>
-          <div class="price-period">per month Ã‚Â· 7-day free trial</div>
+          <div class="price-period">per month &mdash; 7-day free trial</div>
           <ul class="price-list">
             <li>Unlimited scans</li>
             <li>20 active price alerts</li>
             <li>Unlimited scan history</li>
-            <li>Batch Scanning</li>
-            <li>Voice Narration</li>
-            <li>Multi-language &amp; themes</li>
+            <li>Batch Scanning (coming soon)</li>
+            <li>Voice Narration (coming soon)</li>
             <li>No ads</li>
           </ul>
           <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
@@ -1233,7 +1221,7 @@
     </div>
   </section>
 
-  <!-- Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ FOOTER Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1249,23 +1237,21 @@
       </div>
 
       <div class="footer-meta" id="footer-version">
-        v1.0.93 Ã‚Â· build 30187 Ã‚Â· Ã‚Â© 2026 Instant Context
+        v1.0.93 &mdash; build 30187 &mdash; &copy; 2026 Instant Context
       </div>
     </div>
   </footer>
 
   <script>
     fetch('./version.json')
-      .then(r => r.json())
+      .then(function(r) { return r.json(); })
       .then(function(v) {
         var nav = document.getElementById('nav-version');
         var footer = document.getElementById('footer-version');
         if (nav) nav.textContent = 'v' + v.version;
-        if (footer) footer.textContent = 'v' + v.version + ' \u00B7 build ' + v.build + ' \u00B7 \u00A9 2026 Instant Context';
+        if (footer) footer.textContent = 'v' + v.version + ' \u2014 build ' + v.build + ' \u2014 \u00A9 2026 Instant Context';
       })
-      .catch(function() {
-        // stays on the hardcoded fallback if version.json is unavailable
-      });
+      .catch(function() {});
   </script>
 </body>
 </html>
