@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instant Context — Point your camera. We remember the rest.</title>
-  <meta name="description" content="Instant Context turns your camera into a searchable shopping ledger. Scan products and receipts, track prices, organize collections, and get notified the moment a price drops.">
+  <meta name="description" content="Instant Context remembers every product and receipt you scan. Track prices, stay organized, and get notified the moment a price drops — without typing a thing.">
   <meta name="theme-color" content="#060810">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -599,6 +599,23 @@
       opacity: 0.6;
     }
 
+    /* Coming Soon variant — orange/amber accent instead of cyan */
+    .feature-tag-soon {
+      color: #f59e0b;
+    }
+
+    .feature-tag-soon::before {
+      background: #f59e0b;
+    }
+
+    .feature-card:has(.feature-tag-soon) {
+      opacity: 0.7;
+    }
+
+    .feature-card:has(.feature-tag-soon):hover {
+      opacity: 1;
+    }
+
     .feature-name {
       font-size: 1.05rem;
       font-weight: 700;
@@ -888,7 +905,7 @@
       <a href="/" class="nav-brand">
         <img src="./app-logo.png" alt="Instant Context">
         <span class="nav-brand-name">Instant Context</span>
-        <span class="nav-pill">v1.0.92</span>
+        <span class="nav-pill" id="nav-version">v1.0.92</span>
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
          class="nav-cta" target="_blank" rel="noopener">
@@ -905,9 +922,9 @@
         <div class="hero-kicker">Open Beta · Android</div>
         <h1>Point your camera.<br><em>We remember the rest.</em></h1>
         <p class="hero-sub">
-          Instant Context turns your phone's camera into a searchable shopping ledger.
-          Scan a product or receipt once, and it's saved, priced, and organized —
-          ready the moment you need it.
+          Scan anything in a store — a product, a price tag, a receipt — and the app
+          saves it automatically. No typing. It keeps track of prices while you sleep
+          and tells you when the right moment to buy arrives.
         </p>
         <div class="hero-cta-row">
           <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
@@ -996,9 +1013,9 @@
   <section class="section">
     <div class="wrap">
       <div class="section-label">How It Works</div>
-      <h2 class="section-title">Three taps. That's the whole workflow.</h2>
+      <h2 class="section-title">Three taps. Done.</h2>
       <p class="section-sub">
-        No manual entry. No typing product names. Just point, scan, and walk away.
+        No typing. No copying product names. Just point, scan, and walk away.
       </p>
 
       <div class="steps-row">
@@ -1006,24 +1023,24 @@
           <div class="step-num">01 — SCAN</div>
           <div class="step-title">Point at anything</div>
           <div class="step-text">
-            Aim at a product on a shelf, a receipt on the counter, or a price tag
-            on a clearance rack. One tap captures it.
+            Product on a shelf, price tag on a clearance rack, receipt on the
+            counter — one tap and it's saved.
           </div>
         </div>
         <div class="step">
           <div class="step-num">02 — IDENTIFY</div>
-          <div class="step-title">We figure out what it is</div>
+          <div class="step-title">The app figures out what it is</div>
           <div class="step-text">
-            The app reads labels, OCR text, and visual details to identify the
-            exact product — brand, model, and current market price.
+            It reads the label, the text, and the packaging to get the exact
+            product name, brand, and current going price.
           </div>
         </div>
         <div class="step">
           <div class="step-num">03 — TRACK</div>
-          <div class="step-title">It works in the background</div>
+          <div class="step-title">It watches while you don't</div>
           <div class="step-text">
-            Price alerts run every 15 minutes. History is searchable. You'll
-            get a notification the moment the price hits your target.
+            Price checks run every 15 minutes in the background. The moment
+            the price hits your target, you get a notification.
           </div>
         </div>
       </div>
@@ -1034,21 +1051,20 @@
   <section id="features" class="section" style="padding-top:0;">
     <div class="wrap">
       <div class="section-label">Features</div>
-      <h2 class="section-title">Everything your shopping memory needs.</h2>
+      <h2 class="section-title">Everything in one place.</h2>
       <p class="section-sub">
-        Built for people who research before they buy — and want to remember what they found.
+        For anyone who shops around before buying and keeps losing track of what they found.
       </p>
 
       <div class="features-grid">
 
         <div class="feature-card feature-wide">
-          <div class="feature-tag">Price Intelligence</div>
+          <div class="feature-tag">Price Tracking</div>
           <div class="feature-name">Price History Timelines</div>
           <div class="feature-desc">
-            Set a target price on any product. The app checks every 15 minutes
-            and builds a full price history chart so you can spot the right
-            moment to buy — not just the current price. You get a push
-            notification the instant the price drops to your target.
+            Tell the app what you're willing to pay. It checks the price every
+            15 minutes and shows you a chart of how the price has moved over
+            time. When it hits your number, you get a notification. Simple as that.
           </div>
         </div>
 
@@ -1056,64 +1072,64 @@
           <div class="feature-tag">Organization</div>
           <div class="feature-name">Smart Collections</div>
           <div class="feature-desc">
-            Organize scans into folders like "Kitchen Remodel" or "BBQ Gear."
-            Long-press any scan to file it. Filter your entire history to a
-            single project in one tap.
+            Group scans into folders like "Kitchen Remodel" or "BBQ Gear."
+            Long-press any scan to add it. Filter your whole history down to
+            one project with a single tap.
           </div>
         </div>
 
         <div class="feature-card">
           <div class="feature-tag">Receipts</div>
-          <div class="feature-name">Receipt Intelligence</div>
+          <div class="feature-name">Receipt Scanning</div>
           <div class="feature-desc">
-            Scan a physical receipt and the app extracts the store name, date,
-            and every line item — automatically. No typing. No manual totals.
+            Point your camera at a paper receipt. The app pulls out the store
+            name, the date, and every item on the list. No typing anything.
           </div>
         </div>
 
         <div class="feature-card">
           <div class="feature-tag">Purchase Tracking</div>
-          <div class="feature-name">Verified Purchases</div>
+          <div class="feature-name">Mark as Purchased</div>
           <div class="feature-desc">
-            Mark items you actually bought with the retailer, price, and date.
-            Builds a concrete, searchable ledger of every purchase — separate
-            from items you're still watching.
+            When you buy something, mark it. The app logs where you bought it,
+            what you paid, and when — so you have a real record of what you've
+            spent, not just what you looked at.
           </div>
         </div>
 
         <div class="feature-card">
-          <div class="feature-tag">Premium</div>
+          <div class="feature-tag feature-tag-soon">Coming Soon</div>
           <div class="feature-name">Batch Scanning</div>
           <div class="feature-desc">
-            Scan an entire shelf of products at once. Queue multiple items in
-            a single session and review them all when you're done shopping.
+            Scan a whole shelf of products in one session instead of one at a
+            time. Review everything when you're done shopping.
           </div>
         </div>
 
         <div class="feature-card">
-          <div class="feature-tag">Premium</div>
+          <div class="feature-tag feature-tag-soon">Coming Soon</div>
           <div class="feature-name">Voice Narration</div>
           <div class="feature-desc">
-            Hands-free interaction. Ask the app to read back a scan or describe
-            a product while your hands are full in the store.
+            Hands full in the store? Just ask the app to read back what it found.
+            No touching the screen required.
           </div>
         </div>
 
         <div class="feature-card">
-          <div class="feature-tag">Global</div>
-          <div class="feature-name">Multi-Language &amp; Themes</div>
+          <div class="feature-tag feature-tag-soon">Coming Soon</div>
+          <div class="feature-name">More Languages &amp; Themes</div>
           <div class="feature-desc">
-            Full support across multiple languages with custom interface themes.
-            The app adapts to how you work, wherever you are.
+            Support for additional languages and custom color themes is on the
+            way. The app will work the way you want it to look.
           </div>
         </div>
 
         <div class="feature-card">
           <div class="feature-tag">Search</div>
-          <div class="feature-name">Advanced Search</div>
+          <div class="feature-name">Search Your History</div>
           <div class="feature-desc">
-            Search in plain language — "blue sofa from IKEA" or "power tools
-            under $100." Full-text across every scan you've ever saved.
+            Type whatever you remember — "blue sofa from IKEA" or "tools under
+            $100." It searches everything you've ever scanned.
           </div>
         </div>
 
@@ -1124,43 +1140,43 @@
   <!-- ───── TECH LAYER ───── -->
   <section class="section" style="padding-top:0;">
     <div class="wrap">
-      <div class="section-label">Under the Hood</div>
-      <h2 class="section-title">Built to be reliable, not just clever.</h2>
+      <div class="section-label">How It Actually Works</div>
+      <h2 class="section-title">Fast and accurate. Not just flashy.</h2>
       <p class="section-sub">
-        Two layers work together: one to identify exactly what you're looking at,
-        one to keep your history organized and synced.
+        The app does two things well: it figures out exactly what you're looking at,
+        and it keeps that information safe and searchable for as long as you need it.
       </p>
 
       <div class="tech-grid">
         <div class="tech-card">
-          <div class="tech-card-label">Identification Layer</div>
-          <h3>Precise product recognition</h3>
+          <div class="tech-card-label">What It Reads</div>
+          <h3>It gets the details right</h3>
           <p>
-            Gemini Vision analyzes every scan — reading labels, OCR text,
-            logos, and product structure to nail the exact model and generation,
-            not just the broad category. The difference between a Fenix 8 and
-            a Fenix 7 matters when you're tracking price history.
+            The app reads labels, text printed on packaging, logos, and product
+            structure to get the exact name and model — not just "headphones" or
+            "coffee maker." That precision is what makes the price history
+            actually useful.
           </p>
           <ul class="tech-list">
-            <li>Brand + model + generation precision</li>
-            <li>OCR-assisted product code extraction</li>
-            <li>Receipt line-item parsing</li>
+            <li>Brand, model, and version — not just category</li>
+            <li>Reads barcodes and product codes from the label</li>
+            <li>Pulls every line item off a paper receipt</li>
           </ul>
         </div>
         <div class="tech-card">
-          <div class="tech-card-label">Memory Layer</div>
-          <h3>History that actually works offline</h3>
+          <div class="tech-card-label">Where It Saves</div>
+          <h3>Your history goes with you, everywhere</h3>
           <p>
-            Every scan persists to your private cloud history with full-text
-            search indexing. Price monitoring runs on a 15-minute background
-            schedule against live shopping APIs — no battery drain, no manual
-            refreshing.
+            Everything you scan saves to your private account automatically. It
+            works without Wi-Fi and syncs when you're back online. Price checks
+            run in the background on a schedule — your phone doesn't need to be
+            open for it to work.
           </p>
           <ul class="tech-list">
-            <li>Full-text search across all scans</li>
-            <li>Offline-first with automatic cloud sync</li>
-            <li>Adaptive price polling (checks more often near your target)</li>
-            <li>GDPR-compliant · full data export · account deletion</li>
+            <li>Works offline, syncs when you reconnect</li>
+            <li>Price checks every 15 minutes, automatically</li>
+            <li>Checks more often the closer a price gets to your target</li>
+            <li>Your data stays yours — export or delete any time</li>
           </ul>
         </div>
       </div>
@@ -1171,8 +1187,8 @@
   <section class="section" style="padding-top:0;" id="pricing">
     <div class="wrap">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Start free. Upgrade when it clicks.</h2>
-      <p class="section-sub">No subscription required to get real value from day one.</p>
+      <h2 class="section-title">Free to start. No catch.</h2>
+      <p class="section-sub">Try it out for free. Upgrade if you want more scans and alerts.</p>
 
       <div class="pricing-grid">
         <div class="price-card">
@@ -1232,11 +1248,24 @@
            target="_blank" rel="noopener">Google Play</a>
       </div>
 
-      <div class="footer-meta">
+      <div class="footer-meta" id="footer-version">
         v1.0.92 · build 30186 · © 2026 Instant Context
       </div>
     </div>
   </footer>
 
+  <script>
+    fetch('./version.json')
+      .then(r => r.json())
+      .then(function(v) {
+        var nav = document.getElementById('nav-version');
+        var footer = document.getElementById('footer-version');
+        if (nav) nav.textContent = 'v' + v.version;
+        if (footer) footer.textContent = 'v' + v.version + ' \u00B7 build ' + v.build + ' \u00B7 \u00A9 2026 Instant Context';
+      })
+      .catch(function() {
+        // stays on the hardcoded fallback if version.json is unavailable
+      });
+  </script>
 </body>
 </html>
