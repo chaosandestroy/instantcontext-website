@@ -65,7 +65,7 @@
         <div class="logo">🔒</div>
         <h1>Privacy Policy</h1>
         <p class="muted">Effective date: December 27, 2025</p>
-        <p class="muted" style="font-size: 0.9rem;">Last Updated: February 1, 2026</p>
+        <p class="muted" style="font-size: 0.9rem;">Last Updated: April 3, 2026</p>
       </header>
 
       <div class="card">
@@ -126,9 +126,24 @@
 
       <div class="card">
         <h2>AI Processing Services</h2>
-        <p>Your images may be processed by:</p>
+        <p>Instant Context uses a dual-AI architecture powered by Google Generative AI ("Gemini") to deliver its core features. When you scan an object:</p>
+        <h3>1. Visual Identification (Google Gemini Pro)</h3>
         <ul>
-          <li><strong>OpenAI/Anthropic</strong>: Images processed securely for AI analysis (no data stored by third parties)</li>
+          <li>Your captured image is transmitted over an encrypted connection to the Google Generative AI API for product identification and visual analysis.</li>
+          <li>Google processes the image data solely to generate a structured identification response. Images are not used by Google to train generative AI models. See <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API Terms</a>.</li>
+          <li>No API keys, device identifiers, or personally identifiable information are included in the image payload.</li>
+        </ul>
+        <h3>2. Price Matching (Google Gemini Flash &amp; SerpApi)</h3>
+        <ul>
+          <li>When you use the price comparison feature, a short text query (product name) is sent to a Supabase Edge Function that calls <strong>Google Gemini Flash</strong> for semantic relevance filtering and <strong>SerpApi</strong> (Google Shopping) for live pricing data.</li>
+          <li>Only the product name string is transmitted — no images, user IDs, or personal data are included in these requests.</li>
+          <li>SerpApi processes the query to return publicly available shopping results. See <a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi Legal</a>.</li>
+        </ul>
+        <h3>Data Handling Guarantees</h3>
+        <ul>
+          <li>All API communications use TLS encryption in transit.</li>
+          <li>No raw images or query strings are stored by Instant Context's servers after the response is delivered to your device.</li>
+          <li>Third-party AI providers process data solely to fulfill the API request and do not retain it for model training under their current API terms of service.</li>
         </ul>
       </div>
 
@@ -194,6 +209,8 @@
         <p>We may update this policy from time to time. The latest version will be available at this URL.</p>
         <h2>Third‑Party Links</h2>
         <ul>
+          <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API</a></li>
+          <li><a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi</a></li>
           <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a></li>
           <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat</a></li>
           <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a></li>
