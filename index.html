@@ -1,942 +1,1242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Context – Your Personal Shopping Second Brain</title>
-    <meta name="description" content="Instant Context is your personal shopping second brain. Scan anything, and it remembers it — with price tracking, smart collections, and instant recall of your entire physical shopping history.">
-    <meta name="theme-color" content="#111418">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 25%, #1a0f3e 50%, #0f1a35 75%, #050812 100%);
-            background-attachment: fixed;
-            color: #e0e0e0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Advanced animated background */
-        .cyber-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(0deg, transparent 24%, rgba(0, 212, 255, 0.03) 25%, rgba(0, 212, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.03) 75%, rgba(0, 212, 255, 0.03) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(0, 212, 255, 0.03) 25%, rgba(0, 212, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.03) 75%, rgba(0, 212, 255, 0.03) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-            animation: gridDrift 20s linear infinite;
-        }
-
-        @keyframes gridDrift {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
-
-        .glow-orbs {
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #00d4ff, transparent);
-            top: 10%;
-            left: 5%;
-            animation: float 15s ease-in-out infinite;
-        }
-
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #0099ff, transparent);
-            top: 60%;
-            right: 5%;
-            animation: float 20s ease-in-out infinite reverse;
-        }
-
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, #00d4ff, transparent);
-            bottom: 10%;
-            left: 30%;
-            animation: float 18s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -50px); }
-            66% { transform: translate(-20px, 30px); }
-        }
-
-        /* Staggered section animations */
-        section {
-            position: relative;
-            z-index: 2;
-            opacity: 0;
-            animation: sectionFadeIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        @keyframes sectionFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section:nth-of-type(1) { animation-delay: 0s; }
-        section:nth-of-type(2) { animation-delay: 0.15s; }
-        section:nth-of-type(3) { animation-delay: 0.3s; }
-        section:nth-of-type(4) { animation-delay: 0.45s; }
-        section:nth-of-type(5) { animation-delay: 0.6s; }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            z-index: 3;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: rgba(0, 212, 255, 0.08);
-            border: 1px solid rgba(0, 212, 255, 0.4);
-            border-radius: 50px;
-            color: #00d4ff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
-            animation: badgePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes badgePulse {
-            0%, 100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.1); }
-            50% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.4), inset 0 0 30px rgba(0, 212, 255, 0.15); }
-        }
-
-        .status-badge::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #00d4ff;
-            border-radius: 50%;
-            animation: statusBlink 1s ease-in-out infinite;
-        }
-
-        @keyframes statusBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .logo-and-title {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .logo {
-            display: inline-block;
-            animation: logoFloat 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
-        }
-
-        .logo img {
-            height: 100px;
-            width: auto;
-            display: block;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-25px) scale(1.05); }
-        }
-
-        h1 {
-            font-size: 5.5rem;
-            font-weight: 900;
-            letter-spacing: -3px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #00d4ff 0%, #00f0ff 25%, #0099ff 50%, #00d4ff 100%);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 4s ease infinite;
-            text-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .tagline {
-            font-size: 1.6rem;
-            color: #00d4ff;
-            margin-bottom: 35px;
-            font-weight: 600;
-            opacity: 0.95;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            color: #c0c0c0;
-            margin-bottom: 60px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        /* CTA Group */
-        .cta-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 80px;
-        }
-
-        .button {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 18px 45px;
-            background: linear-gradient(135deg, #00d4ff 0%, #00f0ff 50%, #0099ff 100%);
-            color: #000;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            overflow: hidden;
-            letter-spacing: 0.5px;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: translate(-50%, -50%);
-            transition: width 0.7s, height 0.7s;
-            z-index: 0;
-        }
-
-        .button:hover::before {
-            width: 400px;
-            height: 400px;
-        }
-
-        .button span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .button:hover {
-            transform: translateY(-5px) scale(1.08);
-            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .button-secondary {
-            background: rgba(0, 212, 255, 0.1);
-            color: #00d4ff;
-            border: 2px solid #00d4ff;
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
-        }
-
-        .button-secondary:hover {
-            background: rgba(0, 212, 255, 0.2);
-            border-color: #00f0ff;
-            color: #00f0ff;
-        }
-
-        /* Stats Section */
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 50%, rgba(0, 212, 255, 0.08) 100%);
-            border: 2px solid rgba(0, 212, 255, 0.25);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15), inset 0 1px 1px rgba(0, 212, 255, 0.1);
-            margin-bottom: 100px;
-        }
-
-        .stat {
-            text-align: center;
-            animation: statIn 1s ease-out forwards;
-            padding: 20px;
-            border-radius: 15px;
-            transition: all 0.4s ease;
-        }
-
-        .stat:hover {
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
-        }
-
-        .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-            display: block;
-            animation: iconFloat 2s ease-in-out infinite;
-        }
-
-        .stat:nth-child(1) .stat-icon { animation-delay: 0s; }
-        .stat:nth-child(2) .stat-icon { animation-delay: 0.5s; }
-        .stat:nth-child(3) .stat-icon { animation-delay: 1s; }
-        .stat:nth-child(4) .stat-icon { animation-delay: 1.5s; }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .stat:nth-child(1) { animation-delay: 0.2s; }
-        .stat:nth-child(2) { animation-delay: 0.3s; }
-        .stat:nth-child(3) { animation-delay: 0.4s; }
-        .stat:nth-child(4) { animation-delay: 0.5s; }
-
-        @keyframes statIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .stat-number {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: #00d4ff;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: #e0e0e0;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .stat-desc {
-            font-size: 0.85rem;
-            color: #9a9a9a;
-            font-weight: 300;
-            line-height: 1.4;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 120px 20px;
-        }
-
-        .section-title {
-            font-size: 3.5rem;
-            text-align: center;
-            margin-bottom: 80px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .workflow {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            position: relative;
-        }
-
-        .workflow::before {
-            content: '';
-            position: absolute;
-            top: 40%;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.3) 50%, transparent 100%);
-            display: none;
-        }
-
-        @media (min-width: 900px) {
-            .workflow::before {
-                display: block;
-            }
-        }
-
-        .flow-step {
-            position: relative;
-            padding: 40px 30px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 16px;
-            backdrop-filter: blur(15px);
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: stepIn 0.8s ease-out forwards;
-        }
-
-        .flow-step:nth-child(1) { animation-delay: 0.1s; }
-        .flow-step:nth-child(2) { animation-delay: 0.2s; }
-        .flow-step:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes stepIn {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .flow-step:hover {
-            transform: translateY(-15px);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);
-            border-color: rgba(0, 212, 255, 0.4);
-            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
-        }
-
-        .step-number {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #000;
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
-        }
-
-        .step-title {
-            font-size: 1.4rem;
-            color: #00d4ff;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .step-desc {
-            font-size: 1rem;
-            color: #a0a0a0;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* Features Section */
-        .features-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 20px;
-        }
-
-        /* AI Architecture Section */
-        .ai-architecture {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 120px 20px;
-        }
-        .ai-architecture .section-subtitle {
-            text-align: center;
-            color: #9a9aaa;
-            margin-bottom: 60px;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-        .ai-arch-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .ai-arch-card {
-            padding: 40px 35px;
-            border-radius: 18px;
-            backdrop-filter: blur(15px);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .ai-arch-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-        }
-        .ai-arch-card--vision {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-        .ai-arch-card--vision:hover {
-            border-color: rgba(139, 92, 246, 0.45);
-            box-shadow: 0 30px 80px rgba(139, 92, 246, 0.2);
-        }
-        .ai-arch-card--edge {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 212, 255, 0.02) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        .ai-arch-card--edge:hover {
-            border-color: rgba(0, 212, 255, 0.45);
-            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.2);
-        }
-        .ai-arch-card .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .ai-arch-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        .ai-arch-card--vision h3 { color: #c4b5fd; }
-        .ai-arch-card--edge h3 { color: #67e8f9; }
-        .ai-arch-card p {
-            color: #b0b0c0;
-            font-size: 0.95rem;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-        .ai-arch-card ul {
-            margin-top: 20px;
-            padding-left: 20px;
-            color: #a0a0a0;
-            font-size: 0.9rem;
-            line-height: 2;
-        }
-        @media (max-width: 700px) {
-            .ai-arch-grid { grid-template-columns: 1fr; }
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
-        .feature {
-            padding: 40px 35px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.07) 0%, rgba(0, 212, 255, 0.01) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            border-radius: 18px;
-            backdrop-filter: blur(15px);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            animation: featureIn 0.8s ease-out forwards;
-        }
-
-        .feature:nth-child(1) { animation-delay: 0.05s; }
-        .feature:nth-child(2) { animation-delay: 0.1s; }
-        .feature:nth-child(3) { animation-delay: 0.15s; }
-        .feature:nth-child(4) { animation-delay: 0.2s; }
-        .feature:nth-child(5) { animation-delay: 0.25s; }
-        .feature:nth-child(6) { animation-delay: 0.3s; }
-        .feature:nth-child(7) { animation-delay: 0.35s; }
-
-        @keyframes featureIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .feature:hover::before {
-            opacity: 1;
-        }
-
-        .feature:hover {
-            transform: translateY(-20px) scale(1.03);
-            border-color: rgba(0, 212, 255, 0.35);
-            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.25);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.12) 0%, rgba(0, 212, 255, 0.03) 100%);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: iconBounce 2s ease-in-out infinite;
-        }
-
-        .feature:nth-child(1) .feature-icon { animation-delay: 0s; }
-        .feature:nth-child(2) .feature-icon { animation-delay: 0.15s; }
-        .feature:nth-child(3) .feature-icon { animation-delay: 0.3s; }
-        .feature:nth-child(4) .feature-icon { animation-delay: 0.45s; }
-        .feature:nth-child(5) .feature-icon { animation-delay: 0.6s; }
-        .feature:nth-child(6) .feature-icon { animation-delay: 0.75s; }
-        .feature:nth-child(7) .feature-icon { animation-delay: 0.9s; }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .feature-title {
-            font-size: 1.35rem;
-            color: #00d4ff;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-text {
-            font-size: 1rem;
-            color: #a0a0a0;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-            font-weight: 300;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
-            border-top: 1px solid rgba(0, 212, 255, 0.1);
-            padding: 80px 20px 40px;
-            text-align: center;
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        footer p {
-            margin: 12px 0;
-        }
-
-        footer a {
-            color: #00d4ff;
-            text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #00f0ff;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.5rem;
-                letter-spacing: -1px;
-            }
-
-            .logo {
-                font-size: 60px;
-            }
-
-            .tagline {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .button {
-                width: 100%;
-                padding: 15px 30px;
-                font-size: 1rem;
-            }
-
-            .button-secondary {
-                width: 100%;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .stats-bar {
-                gap: 20px;
-                padding: 35px 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant Context — Point your camera. We remember the rest.</title>
+  <meta name="description" content="Instant Context turns your camera into a searchable shopping ledger. Scan products and receipts, track prices, organize collections, and get notified the moment a price drops.">
+  <meta name="theme-color" content="#060810">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =====================================================================
+       RESET & BASE
+    ===================================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black:      #060810;
+      --surface:    #0c1120;
+      --surface-2:  #111827;
+      --border:     rgba(255,255,255,0.07);
+      --border-hi:  rgba(0,212,255,0.25);
+      --cyan:       #00d4ff;
+      --cyan-dim:   rgba(0,212,255,0.15);
+      --cyan-glow:  rgba(0,212,255,0.08);
+      --red:        #ff3b5c;
+      --text-hi:    #f0f4ff;
+      --text-mid:   #8892a4;
+      --text-lo:    #4a5568;
+      --mono:       'JetBrains Mono', 'Courier New', monospace;
+      --sans:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:     10px;
+      --radius-lg:  16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--black);
+      color: var(--text-hi);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =====================================================================
+       STATIC GRID BACKGROUND — no drift, no blur
+    ===================================================================== */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* =====================================================================
+       LAYOUT WRAPPERS
+    ===================================================================== */
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =====================================================================
+       NAV
+    ===================================================================== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(6,8,16,0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-brand img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-brand-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-hi);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-pill {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--cyan);
+      background: var(--cyan-glow);
+      border: 1px solid var(--border-hi);
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: var(--cyan);
+      color: #000;
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      transition: opacity 0.15s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* =====================================================================
+       SCAN LINE ANIMATION — used in hero only, crisp
+    ===================================================================== */
+    @keyframes scanLine {
+      0%   { top: 0; opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* =====================================================================
+       HERO
+    ===================================================================== */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 24px 80px;
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-kicker::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      color: var(--text-hi);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      background: var(--cyan);
+      color: #000;
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border-hi);
+      color: var(--cyan);
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: var(--cyan-glow);
+      letter-spacing: 0.2px;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--cyan-dim);
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+    }
+
+    /* ---- Phone mockup right column ---- */
+    .hero-mockup {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mockup-frame {
+      position: relative;
+      width: 260px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(0,212,255,0.12),
+        0 32px 80px rgba(0,0,0,0.6);
+      animation: fadeUp 0.8s 0.3s both;
+    }
+
+    .mockup-screen {
+      padding: 20px 16px;
+      min-height: 460px;
+      position: relative;
+      background: var(--black);
+    }
+
+    /* Scan sweep line */
+    .scan-sweep {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      animation: scanLine 3s ease-in-out infinite;
+    }
+
+    /* Corner brackets on mockup */
+    .corner { position: absolute; width: 14px; height: 14px; }
+    .corner-tl { top: 12px; left: 12px; border-top: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); }
+    .corner-tr { top: 12px; right: 12px; border-top: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); }
+    .corner-bl { bottom: 12px; left: 12px; border-bottom: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); }
+    .corner-br { bottom: 12px; right: 12px; border-bottom: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); }
+
+    /* Data cards inside mockup */
+    .mock-header {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      padding-top: 24px;
+    }
+
+    .mock-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .mock-card-label {
+      font-size: 0.6rem;
+      color: var(--text-lo);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+
+    .mock-card-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-hi);
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mock-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mock-price {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+
+    .mock-badge {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .mock-badge-active {
+      background: rgba(0,212,255,0.12);
+      color: var(--cyan);
+      border: 1px solid rgba(0,212,255,0.3);
+    }
+
+    .mock-badge-drop {
+      background: rgba(255,59,92,0.12);
+      color: var(--red);
+      border: 1px solid rgba(255,59,92,0.3);
+    }
+
+    .mock-badge-bought {
+      background: rgba(74,222,128,0.1);
+      color: #4ade80;
+      border: 1px solid rgba(74,222,128,0.25);
+    }
+
+    .mock-alert {
+      margin-top: 12px;
+      background: rgba(0,212,255,0.06);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-left: 2px solid var(--cyan);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.62rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .mock-alert strong {
+      color: var(--cyan);
+      font-family: var(--mono);
+    }
+
+    /* =====================================================================
+       STATS ROW
+    ===================================================================== */
+    .stats-section {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item {
+      padding: 36px 24px;
+      border-right: 1px solid var(--border);
+      animation: fadeUp 0.5s both;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--cyan);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+
+    /* =====================================================================
+       HOW IT WORKS
+    ===================================================================== */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 24px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-hi);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .step {
+      background: var(--surface);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+
+    .step:hover { background: var(--surface-2); }
+
+    .step-num {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-hi);
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* =====================================================================
+       FEATURES
+    ===================================================================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      padding: 32px 28px;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .feature-card:hover { background: var(--surface-2); }
+
+    /* Cyan accent line on hover */
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-tag::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1px;
+      background: var(--cyan);
+      opacity: 0.6;
+    }
+
+    .feature-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-hi);
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* Wide card spans two columns */
+    .feature-wide {
+      grid-column: span 2;
+    }
+
+    /* =====================================================================
+       TECH LAYER (replaces old AI architecture)
+    ===================================================================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tech-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      transition: border-color 0.2s;
+    }
+
+    .tech-card:hover { border-color: var(--border-hi); }
+
+    .tech-card-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .tech-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-hi);
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+    }
+
+    .tech-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .tech-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tech-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+    }
+
+    .tech-list li::before {
+      content: '─';
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* =====================================================================
+       PRICING / TIERS
+    ===================================================================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 720px;
+    }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+    }
+
+    .price-card-featured {
+      border-color: var(--border-hi);
+      background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, var(--surface) 60%);
+    }
+
+    .price-tier {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .price-card-featured .price-tier { color: var(--cyan); }
+
+    .price-amount {
+      font-family: var(--mono);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--text-hi);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-period {
+      font-size: 0.8rem;
+      color: var(--text-lo);
+      margin-bottom: 24px;
+    }
+
+    .price-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .price-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-mid);
+    }
+
+    .price-list li::before {
+      content: '✓';
+      color: var(--cyan);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* =====================================================================
+       FOOTER
+    ===================================================================== */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 48px 24px 36px;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand img {
+      height: 22px;
+      width: auto;
+      opacity: 0.7;
+    }
+
+    .footer-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-lo);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text-mid); }
+
+    .footer-meta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-lo);
+      letter-spacing: 0.5px;
+    }
+
+    /* =====================================================================
+       RESPONSIVE
+    ===================================================================== */
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+
+      .hero-kicker { justify-content: center; }
+      .hero-cta-row { justify-content: center; }
+
+      .hero-mockup {
+        order: -1;
+      }
+
+      .mockup-frame { width: 220px; }
+      .mockup-screen { min-height: 380px; }
+
+      .stats-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+
+      .steps-row { grid-template-columns: 1fr; }
+      .step { border-bottom: 1px solid var(--border); }
+      .step:last-child { border-bottom: none; }
+
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-wide { grid-column: span 1; }
+
+      .tech-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-pill { display: none; }
+
+      .hero { padding: 80px 24px 60px; }
+
+      .stats-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-item { padding: 24px 16px; }
+
+      .section { padding: 72px 24px; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="cyber-grid"></div>
-    <div class="glow-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+
+  <div class="grid-bg"></div>
+
+  <!-- ───── NAV ───── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="./app-logo.png" alt="Instant Context">
+        <span class="nav-brand-name">Instant Context</span>
+        <span class="nav-pill">v1.0.92</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+         class="nav-cta" target="_blank" rel="noopener">
+        Get the App
+      </a>
     </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="logo-and-title">
-                <div class="logo">
-                    <img src="./app-logo.png" alt="Instant Context Logo" />
-                </div>
-                <h1>Instant Context</h1>
-            </div>
-            <p class="tagline">Your Personal Shopping Second Brain</p>
-            <p class="hero-description">
-                Scan anything in the real world and never lose the context again. Instant Context remembers every product you've ever looked at — what it cost, where you saw it, whether you bought it — and organizes it all so you can find it the moment you need it.
-            </p>
-            <div class="status-badge">
-                <span></span> Public Beta Now Live
-            </div>
+  <!-- ───── HERO ───── -->
+  <section class="hero">
+    <div class="hero-inner">
 
-            <div class="cta-group">
-                <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app" class="button"><span>🚀 Get the App</span></a>
-                <a href="#features" class="button button-secondary"><span>✨ See Features</span></a>
-            </div>
-
-            <!-- Stats Section -->
-            <div class="stats-bar">
-                <div class="stat">
-                    <div class="stat-icon">📸</div>
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Scans Remembered</div>
-                    <div class="stat-desc">Your entire shopping history, forever searchable</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon">📈</div>
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Price Tracking</div>
-                    <div class="stat-desc">Background monitoring across every item you've saved</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon">🗂️</div>
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Smart Collections</div>
-                    <div class="stat-desc">Organized into projects, wishlists, and rooms</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon">⚡</div>
-                    <div class="stat-number">&lt;2s</div>
-                    <div class="stat-label">Instant Recall</div>
-                    <div class="stat-desc">Find any past scan in seconds with natural language</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <h2 class="section-title">How It Works</h2>
-        <div class="workflow">
-            <div class="flow-step">
-                <div class="step-number">1</div>
-                <div class="step-title">Scan</div>
-                <div class="step-desc">Point your camera at any product — in a store, at home, on a shelf. One tap captures it with full AI identification.</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-number">2</div>
-                <div class="step-title">Remember</div>
-                <div class="step-desc">It's saved to your personal history instantly — with the product name, price context, store, and the date you saw it.</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-number">3</div>
-                <div class="step-title">Recall</div>
-                <div class="step-desc">Search your entire history in plain language, track price drops over time, and organize everything into smart collections.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section id="features" class="features-section">
-        <h2 class="section-title">Built for Shopping Memory</h2>
-        <div class="features-grid">
-            <div class="feature">
-                <div class="feature-icon">✅</div>
-                <div class="feature-title">Mark as Purchased</div>
-                <div class="feature-text">A dedicated layer on top of your scan history to track what you actually bought, where you bought it, and how much you paid. No more guessing what you spent at that hardware store last month.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🗂️</div>
-                <div class="feature-title">Smart Collections</div>
-                <div class="feature-text">Group your scans into project folders — Kitchen Remodel, Wishlist, Holiday Shopping, Office Setup. Build a visual reference library that keeps your research organized by context, not just date.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📈</div>
-                <div class="feature-title">Price History Timelines</div>
-                <div class="feature-text">Set a price alert and Instant Context watches in the background. When the price drops, you'll know. See the full price history visualized as a timeline so you can spot patterns and buy at the right moment.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔍</div>
-                <div class="feature-title">Advanced Search</div>
-                <div class="feature-text">Ask your history in plain language — "blue sofa I scanned at IKEA" or "power tools under $100." Full-text search across everything you've ever captured, not just product names.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🧾</div>
-                <div class="feature-title">Receipt Intelligence</div>
-                <div class="feature-text">Scan a receipt and Instant Context extracts the store, date, every line item, and the total — automatically. Your physical purchases become a structured, searchable record without any manual entry.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🤖</div>
-                <div class="feature-title">Precise AI Identification</div>
-                <div class="feature-text">Dual Gemini AI performs pixel-level analysis to identify the exact product — not just the category. It knows the difference between a Fenix 8 and a Fenix 7, because the details matter when you're tracking price history.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <div class="feature-title">Privacy by Design</div>
-                <div class="feature-text">Your scan history is yours. Full data export, account deletion, and GDPR compliance built in from day one. We don't sell your shopping habits — we help you understand them.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Memory Architecture -->
-    <section id="ai-architecture" class="ai-architecture">
-        <h2 class="section-title">Built to Remember</h2>
-        <p class="section-subtitle">Two AI layers work together — one to identify what you're looking at with pixel-level precision, one to keep your entire shopping history organized, searchable, and useful over time.</p>
-        <div class="ai-arch-grid">
-            <article class="ai-arch-card ai-arch-card--vision">
-                <div class="card-icon">🧠</div>
-                <h3>Identification Layer</h3>
-                <p>Gemini Vision performs a pixel-level audit on every scan — analyzing product details, OCR text, logos, and visual structure to nail the exact product, not just the category. Precise identification is the foundation that makes price tracking and history search actually useful.</p>
-                <ul>
-                    <li>Brand + model + generation precision</li>
-                    <li>OCR-assisted product code extraction</li>
-                    <li>Receipt parsing with line-item accuracy</li>
-                </ul>
-            </article>
-            <article class="ai-arch-card ai-arch-card--edge">
-                <div class="card-icon">💾</div>
-                <h3>Memory Layer</h3>
-                <p>Every scan is persisted to your personal Supabase history with full-text search indexing. Background price monitoring runs on a scheduled cadence against live shopping APIs, so your alerts are always fresh — without draining your battery or data.</p>
-                <ul>
-                    <li>Full-text search across your entire history</li>
-                    <li>Scheduled background price polling</li>
-                    <li>Offline-first with automatic cloud sync</li>
-                </ul>
-            </article>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Instant Context. Your shopping history, perfectly remembered.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> • 
-            <a href="mailto:support@instantcontext.app">Support</a> • 
-            <span>Version 1.0.87</span>
+      <div>
+        <div class="hero-kicker">Open Beta · Android</div>
+        <h1>Point your camera.<br><em>We remember the rest.</em></h1>
+        <p class="hero-sub">
+          Instant Context turns your phone's camera into a searchable shopping ledger.
+          Scan a product or receipt once, and it's saved, priced, and organized —
+          ready the moment you need it.
         </p>
-    </footer>
+        <div class="hero-cta-row">
+          <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+             class="btn-primary" target="_blank" rel="noopener">
+            ▶&nbsp; Google Play
+          </a>
+          <a href="#" class="btn-secondary" aria-label="iOS App Store — coming soon">
+            App Store &nbsp;<span style="font-family:var(--mono);font-size:0.72rem;opacity:0.6">Soon</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="hero-mockup">
+        <div class="mockup-frame">
+          <div class="mockup-screen">
+            <div class="scan-sweep"></div>
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+
+            <div class="mock-header">// Scan History</div>
+
+            <div class="mock-card">
+              <div class="mock-card-label">Product</div>
+              <div class="mock-card-name">Salt &amp; Pepper Grinder Set</div>
+              <div class="mock-price-row">
+                <span class="mock-price">$21.99</span>
+                <span class="mock-badge mock-badge-active">Active</span>
+              </div>
+            </div>
+
+            <div class="mock-card">
+              <div class="mock-card-label">Price Alert</div>
+              <div class="mock-card-name">Sony WH-1000XM5</div>
+              <div class="mock-price-row">
+                <span class="mock-price">$279.99</span>
+                <span class="mock-badge mock-badge-drop">−18%</span>
+              </div>
+            </div>
+
+            <div class="mock-card">
+              <div class="mock-card-label">Receipt · Wayfair</div>
+              <div class="mock-card-name">Accent Chair — Ivory</div>
+              <div class="mock-price-row">
+                <span class="mock-price">$349.00</span>
+                <span class="mock-badge mock-badge-bought">Bought</span>
+              </div>
+            </div>
+
+            <div class="mock-alert">
+              <strong>PRICE DROP</strong>&nbsp; Target met on Sony WH-1000XM5
+              at Best Buy · <strong>$279.99</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── STATS ───── -->
+  <div class="stats-section">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">5/day</div>
+        <div class="stat-label">Free scans · Unlimited on Pro</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">&lt;2s</div>
+        <div class="stat-label">AI identification per scan</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">15m</div>
+        <div class="stat-label">Price check cadence</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Your data, no selling</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── HOW IT WORKS ───── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three taps. That's the whole workflow.</h2>
+      <p class="section-sub">
+        No manual entry. No typing product names. Just point, scan, and walk away.
+      </p>
+
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-num">01 — SCAN</div>
+          <div class="step-title">Point at anything</div>
+          <div class="step-text">
+            Aim at a product on a shelf, a receipt on the counter, or a price tag
+            on a clearance rack. One tap captures it.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02 — IDENTIFY</div>
+          <div class="step-title">We figure out what it is</div>
+          <div class="step-text">
+            The app reads labels, OCR text, and visual details to identify the
+            exact product — brand, model, and current market price.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03 — TRACK</div>
+          <div class="step-title">It works in the background</div>
+          <div class="step-text">
+            Price alerts run every 15 minutes. History is searchable. You'll
+            get a notification the moment the price hits your target.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── FEATURES ───── -->
+  <section id="features" class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything your shopping memory needs.</h2>
+      <p class="section-sub">
+        Built for people who research before they buy — and want to remember what they found.
+      </p>
+
+      <div class="features-grid">
+
+        <div class="feature-card feature-wide">
+          <div class="feature-tag">Price Intelligence</div>
+          <div class="feature-name">Price History Timelines</div>
+          <div class="feature-desc">
+            Set a target price on any product. The app checks every 15 minutes
+            and builds a full price history chart so you can spot the right
+            moment to buy — not just the current price. You get a push
+            notification the instant the price drops to your target.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Organization</div>
+          <div class="feature-name">Smart Collections</div>
+          <div class="feature-desc">
+            Organize scans into folders like "Kitchen Remodel" or "BBQ Gear."
+            Long-press any scan to file it. Filter your entire history to a
+            single project in one tap.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Receipts</div>
+          <div class="feature-name">Receipt Intelligence</div>
+          <div class="feature-desc">
+            Scan a physical receipt and the app extracts the store name, date,
+            and every line item — automatically. No typing. No manual totals.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Purchase Tracking</div>
+          <div class="feature-name">Verified Purchases</div>
+          <div class="feature-desc">
+            Mark items you actually bought with the retailer, price, and date.
+            Builds a concrete, searchable ledger of every purchase — separate
+            from items you're still watching.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Premium</div>
+          <div class="feature-name">Batch Scanning</div>
+          <div class="feature-desc">
+            Scan an entire shelf of products at once. Queue multiple items in
+            a single session and review them all when you're done shopping.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Premium</div>
+          <div class="feature-name">Voice Narration</div>
+          <div class="feature-desc">
+            Hands-free interaction. Ask the app to read back a scan or describe
+            a product while your hands are full in the store.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Global</div>
+          <div class="feature-name">Multi-Language &amp; Themes</div>
+          <div class="feature-desc">
+            Full support across multiple languages with custom interface themes.
+            The app adapts to how you work, wherever you are.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-tag">Search</div>
+          <div class="feature-name">Advanced Search</div>
+          <div class="feature-desc">
+            Search in plain language — "blue sofa from IKEA" or "power tools
+            under $100." Full-text across every scan you've ever saved.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── TECH LAYER ───── -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-label">Under the Hood</div>
+      <h2 class="section-title">Built to be reliable, not just clever.</h2>
+      <p class="section-sub">
+        Two layers work together: one to identify exactly what you're looking at,
+        one to keep your history organized and synced.
+      </p>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-label">Identification Layer</div>
+          <h3>Precise product recognition</h3>
+          <p>
+            Gemini Vision analyzes every scan — reading labels, OCR text,
+            logos, and product structure to nail the exact model and generation,
+            not just the broad category. The difference between a Fenix 8 and
+            a Fenix 7 matters when you're tracking price history.
+          </p>
+          <ul class="tech-list">
+            <li>Brand + model + generation precision</li>
+            <li>OCR-assisted product code extraction</li>
+            <li>Receipt line-item parsing</li>
+          </ul>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Memory Layer</div>
+          <h3>History that actually works offline</h3>
+          <p>
+            Every scan persists to your private cloud history with full-text
+            search indexing. Price monitoring runs on a 15-minute background
+            schedule against live shopping APIs — no battery drain, no manual
+            refreshing.
+          </p>
+          <ul class="tech-list">
+            <li>Full-text search across all scans</li>
+            <li>Offline-first with automatic cloud sync</li>
+            <li>Adaptive price polling (checks more often near your target)</li>
+            <li>GDPR-compliant · full data export · account deletion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── PRICING ───── -->
+  <section class="section" style="padding-top:0;" id="pricing">
+    <div class="wrap">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Start free. Upgrade when it clicks.</h2>
+      <p class="section-sub">No subscription required to get real value from day one.</p>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-tier">Free</div>
+          <div class="price-amount">$0</div>
+          <div class="price-period">Always free</div>
+          <ul class="price-list">
+            <li>5 scans per day</li>
+            <li>3 active price alerts</li>
+            <li>100 scans in history</li>
+            <li>Smart Collections</li>
+            <li>Receipt Intelligence</li>
+            <li>Advanced Search</li>
+          </ul>
+          <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+             class="btn-secondary" style="width:100%;justify-content:center;"
+             target="_blank" rel="noopener">
+            Download Free
+          </a>
+        </div>
+
+        <div class="price-card price-card-featured">
+          <div class="price-tier">Pro</div>
+          <div class="price-amount">$4.99</div>
+          <div class="price-period">per month · 7-day free trial</div>
+          <ul class="price-list">
+            <li>Unlimited scans</li>
+            <li>20 active price alerts</li>
+            <li>Unlimited scan history</li>
+            <li>Batch Scanning</li>
+            <li>Voice Narration</li>
+            <li>Multi-language &amp; themes</li>
+            <li>No ads</li>
+          </ul>
+          <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+             class="btn-primary" style="width:100%;justify-content:center;"
+             target="_blank" rel="noopener">
+            Start Free Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── FOOTER ───── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="./app-logo.png" alt="Instant Context">
+        <span class="footer-name">Instant Context</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:support@instantcontext.app">Support</a>
+        <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+           target="_blank" rel="noopener">Google Play</a>
+      </div>
+
+      <div class="footer-meta">
+        v1.0.92 · build 30186 · © 2026 Instant Context
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
