@@ -1,227 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Instant Context Privacy Policy</title>
-    <style>
-      :root { --bg:#0f0f1e; --fg:#e0e0e0; --muted:#9a9a9a; --link:#00d4ff; --panel:#1a1a2e; }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
-        color: var(--fg);
-        line-height: 1.6;
-      }
-      .container {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 60px 20px 80px;
-        min-height: 100vh;
-      }
-      header { text-align: center; margin-bottom: 40px; }
-      .logo { font-size: 40px; margin-bottom: 16px; }
-      h1 {
-        font-size: 2.75rem;
-        background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
-      h2 { font-size: 1.5rem; margin: 26px 0 12px; color: #00d4ff; }
-      h3 { font-size: 1.1rem; margin: 18px 0 8px; color: #b7e9ff; }
-      p, li { margin: 10px 0; color: var(--fg); }
-      ul { padding-left: 20px; }
-      .muted { color: var(--muted); }
-      .card {
-        background: rgba(0, 212, 255, 0.05);
-        border: 1px solid rgba(0, 212, 255, 0.1);
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 24px;
-        backdrop-filter: blur(10px);
-      }
-      a { color: var(--link); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      footer {
-        margin-top: 40px;
-        font-size: 0.9rem;
-        color: var(--muted);
-        text-align: center;
-        border-top: 1px solid rgba(0, 212, 255, 0.1);
-        padding-top: 20px;
-      }
-      @media (max-width: 600px) {
-        h1 { font-size: 2.1rem; }
-        .container { padding: 40px 16px 60px; }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="logo">🔒</div>
-        <h1>Privacy Policy</h1>
-        <p class="muted">Effective date: December 27, 2025</p>
-        <p class="muted" style="font-size: 0.9rem;">Last Updated: April 3, 2026</p>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant Context &#8212; Privacy Policy</title>
+  <meta name="description" content="Instant Context privacy policy — what data we collect, how we use it, and the choices you have.">
+  <meta name="theme-color" content="#060810">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/site.css">
+</head>
+<body>
 
-      <div class="card">
-        <p>Instant Context ("the App") is provided by Instant Context. This policy explains what data we collect, how we use it, and the choices you have. The App uses device capabilities (e.g., Camera, Microphone) and third‑party services such as Google AdMob, RevenueCat, and Supabase.</p>
-      </div>
+  <div class="grid-bg"></div>
 
-      <div class="card">
-        <h2>Account & Usage Information</h2>
-        <h3>Account Information</h3>
-        <ul>
-          <li>Email address (when you sign up)</li>
-          <li>Authentication credentials (managed securely via Supabase Auth)</li>
-        </ul>
-        <h3>Usage Data</h3>
-        <ul>
-          <li>Scan history (images you process)</li>
-          <li>OCR text extracted from your scans</li>
-          <li>Daily scan quota usage</li>
-          <li>Subscription/purchase information (via RevenueCat)</li>
-          <li>App usage analytics (via PostHog)</li>
-        </ul>
-        <h3>Device Information</h3>
-        <ul>
-          <li>Device type and model</li>
-          <li>Operating system version</li>
-          <li>App version</li>
-          <li>Unique device identifiers (for analytics)</li>
-        </ul>
-        <h3>Advertising Data (Free Users)</h3>
-        <ul>
-          <li>Ad interaction data (via Google AdMob)</li>
-          <li>Ad watch history for bonus scan tracking</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Summary</h2>
-        <ul>
-          <li>Purpose: Provide core features (camera/microphone capture), display ads, manage subscriptions, and sync data you explicitly submit.</li>
-          <li>Key partners: Google AdMob (ads), RevenueCat (in‑app purchases/subscriptions), Supabase (backend data storage/processing).</li>
-          <li>Sensitive permissions: Camera and Microphone are requested to enable features you choose to use.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Data We Collect</h2>
-        <h3>1. Data you provide</h3>
-        <p>Content you capture or submit (e.g., images, audio, text queries). This remains on‑device unless you choose to upload/sync or use features that call remote APIs.</p>
-        <h3>2. Device and usage data</h3>
-        <p>App crash logs, basic diagnostics, and performance metrics.</p>
-        <h3>3. Advertising data (Google AdMob)</h3>
-        <p>AdMob may collect the Android Advertising ID (AAID), IP address, coarse location (derived from IP), device information, and ad interaction data for ad delivery and measurement. See Google’s policies: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a>.</p>
-        <h3>4. Purchase data (RevenueCat)</h3>
-        <p>RevenueCat processes purchase receipts and related metadata to validate, manage, and restore subscriptions. See RevenueCat’s privacy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.</p>
-        <h3>5. Backend data (Supabase)</h3>
-        <p>When features are used that sync or store data, Supabase processes the data you submit (e.g., account info, app content). Supabase privacy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>.</p>
-      </div>
-
-      <div class="card">
-        <h2>AI Processing Services</h2>
-        <p>Instant Context uses a dual-AI architecture powered by Google Generative AI ("Gemini") to deliver its core features. When you scan an object:</p>
-        <h3>1. Visual Identification (Google Gemini Pro)</h3>
-        <ul>
-          <li>Your captured image is transmitted over an encrypted connection to the Google Generative AI API for product identification and visual analysis.</li>
-          <li>Google processes the image data solely to generate a structured identification response. Images are not used by Google to train generative AI models. See <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API Terms</a>.</li>
-          <li>No API keys, device identifiers, or personally identifiable information are included in the image payload.</li>
-        </ul>
-        <h3>2. Price Matching (Google Gemini Flash &amp; SerpApi)</h3>
-        <ul>
-          <li>When you use the price comparison feature, a short text query (product name) is sent to a Supabase Edge Function that calls <strong>Google Gemini Flash</strong> for semantic relevance filtering and <strong>SerpApi</strong> (Google Shopping) for live pricing data.</li>
-          <li>Only the product name string is transmitted — no images, user IDs, or personal data are included in these requests.</li>
-          <li>SerpApi processes the query to return publicly available shopping results. See <a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi Legal</a>.</li>
-        </ul>
-        <h3>Data Handling Guarantees</h3>
-        <ul>
-          <li>All API communications use TLS encryption in transit.</li>
-          <li>No raw images or query strings are stored by Instant Context's servers after the response is delivered to your device.</li>
-          <li>Third-party AI providers process data solely to fulfill the API request and do not retain it for model training under their current API terms of service.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Additional Analytics</h2>
-        <ul>
-          <li><strong>PostHog</strong>: App usage analytics and performance monitoring</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>How We Use Data</h2>
-        <ul>
-          <li>Provide and improve App functionality.</li>
-          <li>Deliver and measure advertisements.</li>
-          <li>Process purchases/subscriptions and maintain entitlements.</li>
-          <li>Diagnose and fix issues.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Sharing</h2>
-        <p>We share data with service providers listed above only to operate the App. We do not sell personal data.</p>
-        <h2>Data Retention</h2>
-        <p>User‑generated content is retained only as long as needed for the feature you use or as required by law. Ad/purchase telemetry is retained per partner policies (AdMob/RevenueCat).</p>
-        <h2>Security</h2>
-        <p>We use industry‑standard measures to protect data. No method of transmission or storage is 100% secure.</p>
-        <h2>Children’s Privacy</h2>
-        <p>The App is not directed to children under the applicable age limits and should not be used by them.</p>
-      </div>
-
-      <div class="card">
-        <h2>Your Choices and Controls</h2>
-        <ul>
-          <li>Ad personalization: Limit ad personalization via device settings for Ads (Android: Settings → Google → Ads).</li>
-          <li>Camera/Microphone: Disable permissions in system settings; features depending on them will not work.</li>
-          <li>Account/data requests: Contact us to access, correct, or delete data stored with our services where applicable.</li>
-        </ul>
-        <h2>International Transfers</h2>
-        <p>Our partners may process data globally. Safeguards are applied per partner policies and applicable laws.</p>
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:support@instantcontext.app">support@instantcontext.app</a></p>
-      </div>
-
-      <div class="card">
-        <h2>Legal Basis (GDPR)</h2>
-        <p>We process your data based on:</p>
-        <ul>
-          <li><strong>Consent</strong>: You agree to our terms when signing up</li>
-          <li><strong>Contract</strong>: Necessary to provide our service</li>
-          <li><strong>Legitimate Interest</strong>: Service improvement and security</li>
-          <li><strong>Legal Obligation</strong>: Compliance with applicable laws</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Children's Privacy</h2>
-        <p>InstantContext is not intended for users under 13. We do not knowingly collect data from children under 13.</p>
-      </div>
-
-      <div class="card">
-        <h2>Changes to This Policy</h2>
-        <p>We may update this policy from time to time. The latest version will be available at this URL.</p>
-        <h2>Third‑Party Links</h2>
-        <ul>
-          <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API</a></li>
-          <li><a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi</a></li>
-          <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a></li>
-          <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat</a></li>
-          <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a></li>
-        </ul>
-      </div>
-
-      <footer>
-        <p>&copy; 2026 Instant Context</p>
-      </footer>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="./app-logo.png" alt="Instant Context">
+        <span class="nav-brand-name">Instant Context</span>
+        <span class="nav-pill" id="nav-version">v1.0.102</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+         class="nav-cta" target="_blank" rel="noopener">
+        Get the App
+      </a>
     </div>
-  </body>
-  </html>
+  </nav>
 
+  <main class="wrap legal-page">
+    <header>
+      <div class="section-label">Legal</div>
+      <h1 class="section-title">Privacy Policy</h1>
+      <p class="legal-meta">Effective date: December 27, 2025</p>
+      <p class="legal-meta">Last Updated: April 3, 2026</p>
+    </header>
 
+    <div class="legal-card">
+      <p>Instant Context ("the App") is provided by Instant Context. This policy explains what data we collect, how we use it, and the choices you have. The App uses device capabilities (e.g., Camera, Microphone) and third‑party services such as Google AdMob, RevenueCat, and Supabase.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Account &amp; Usage Information</h2>
+      <h3>Account Information</h3>
+      <ul>
+        <li>Email address (when you sign up)</li>
+        <li>Authentication credentials (managed securely via Supabase Auth)</li>
+      </ul>
+      <h3>Usage Data</h3>
+      <ul>
+        <li>Scan history (images you process)</li>
+        <li>OCR text extracted from your scans</li>
+        <li>Daily scan quota usage</li>
+        <li>Subscription/purchase information (via RevenueCat)</li>
+        <li>App usage analytics (via PostHog)</li>
+      </ul>
+      <h3>Device Information</h3>
+      <ul>
+        <li>Device type and model</li>
+        <li>Operating system version</li>
+        <li>App version</li>
+        <li>Unique device identifiers (for analytics)</li>
+      </ul>
+      <h3>Advertising Data (Free Users)</h3>
+      <ul>
+        <li>Ad interaction data (via Google AdMob)</li>
+        <li>Ad watch history for bonus scan tracking</li>
+      </ul>
+    </div>
+
+    <div class="legal-card">
+      <h2>Summary</h2>
+      <ul>
+        <li>Purpose: Provide core features (camera/microphone capture), display ads, manage subscriptions, and sync data you explicitly submit.</li>
+        <li>Key partners: Google AdMob (ads), RevenueCat (in‑app purchases/subscriptions), Supabase (backend data storage/processing).</li>
+        <li>Sensitive permissions: Camera and Microphone are requested to enable features you choose to use.</li>
+      </ul>
+    </div>
+
+    <div class="legal-card">
+      <h2>Data We Collect</h2>
+      <h3>1. Data you provide</h3>
+      <p>Content you capture or submit (e.g., images, audio, text queries). This remains on‑device unless you choose to upload/sync or use features that call remote APIs.</p>
+      <h3>2. Device and usage data</h3>
+      <p>App crash logs, basic diagnostics, and performance metrics.</p>
+      <h3>3. Advertising data (Google AdMob)</h3>
+      <p>AdMob may collect the Android Advertising ID (AAID), IP address, coarse location (derived from IP), device information, and ad interaction data for ad delivery and measurement. See Google’s policies: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a>.</p>
+      <h3>4. Purchase data (RevenueCat)</h3>
+      <p>RevenueCat processes purchase receipts and related metadata to validate, manage, and restore subscriptions. See RevenueCat’s privacy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.</p>
+      <h3>5. Backend data (Supabase)</h3>
+      <p>When features are used that sync or store data, Supabase processes the data you submit (e.g., account info, app content). Supabase privacy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>AI Processing Services</h2>
+      <p>Instant Context uses a dual-AI architecture powered by Google Generative AI ("Gemini") to deliver its core features. When you scan an object:</p>
+      <h3>1. Visual Identification (Google Gemini Pro)</h3>
+      <ul>
+        <li>Your captured image is transmitted over an encrypted connection to the Google Generative AI API for product identification and visual analysis.</li>
+        <li>Google processes the image data solely to generate a structured identification response. Images are not used by Google to train generative AI models. See <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API Terms</a>.</li>
+        <li>No API keys, device identifiers, or personally identifiable information are included in the image payload.</li>
+      </ul>
+      <h3>2. Price Matching (Google Gemini Flash &amp; SerpApi)</h3>
+      <ul>
+        <li>When you use the price comparison feature, a short text query (product name) is sent to a Supabase Edge Function that calls <strong>Google Gemini Flash</strong> for semantic relevance filtering and <strong>SerpApi</strong> (Google Shopping) for live pricing data.</li>
+        <li>Only the product name string is transmitted — no images, user IDs, or personal data are included in these requests.</li>
+        <li>SerpApi processes the query to return publicly available shopping results. See <a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi Legal</a>.</li>
+      </ul>
+      <h3>Data Handling Guarantees</h3>
+      <ul>
+        <li>All API communications use TLS encryption in transit.</li>
+        <li>No raw images or query strings are stored by Instant Context's servers after the response is delivered to your device.</li>
+        <li>Third-party AI providers process data solely to fulfill the API request and do not retain it for model training under their current API terms of service.</li>
+      </ul>
+    </div>
+
+    <div class="legal-card">
+      <h2>Additional Analytics</h2>
+      <ul>
+        <li><strong>PostHog</strong>: App usage analytics and performance monitoring</li>
+      </ul>
+    </div>
+
+    <div class="legal-card">
+      <h2>How We Use Data</h2>
+      <ul>
+        <li>Provide and improve App functionality.</li>
+        <li>Deliver and measure advertisements.</li>
+        <li>Process purchases/subscriptions and maintain entitlements.</li>
+        <li>Diagnose and fix issues.</li>
+      </ul>
+    </div>
+
+    <div class="legal-card">
+      <h2>Sharing</h2>
+      <p>We share data with service providers listed above only to operate the App. We do not sell personal data.</p>
+      <h2>Data Retention</h2>
+      <p>User‑generated content is retained only as long as needed for the feature you use or as required by law. Ad/purchase telemetry is retained per partner policies (AdMob/RevenueCat).</p>
+      <h2>Security</h2>
+      <p>We use industry‑standard measures to protect data. No method of transmission or storage is 100% secure.</p>
+      <h2>Children’s Privacy</h2>
+      <p>The App is not directed to children under the applicable age limits and should not be used by them.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Your Choices and Controls</h2>
+      <ul>
+        <li>Ad personalization: Limit ad personalization via device settings for Ads (Android: Settings → Google → Ads).</li>
+        <li>Camera/Microphone: Disable permissions in system settings; features depending on them will not work.</li>
+        <li>Account/data requests: Contact us to access, correct, or delete data stored with our services where applicable.</li>
+      </ul>
+      <h2>International Transfers</h2>
+      <p>Our partners may process data globally. Safeguards are applied per partner policies and applicable laws.</p>
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:support@instantcontext.app">support@instantcontext.app</a></p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Legal Basis (GDPR)</h2>
+      <p>We process your data based on:</p>
+      <ul>
+        <li><strong>Consent</strong>: You agree to our terms when signing up</li>
+        <li><strong>Contract</strong>: Necessary to provide our service</li>
+        <li><strong>Legitimate Interest</strong>: Service improvement and security</li>
+        <li><strong>Legal Obligation</strong>: Compliance with applicable laws</li>
+      </ul>
+    </div>
+
+    <div class="legal-card">
+      <h2>Children's Privacy</h2>
+      <p>InstantContext is not intended for users under 13. We do not knowingly collect data from children under 13.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Changes to This Policy</h2>
+      <p>We may update this policy from time to time. The latest version will be available at this URL.</p>
+      <h2>Third‑Party Links</h2>
+      <ul>
+        <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API</a></li>
+        <li><a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi</a></li>
+        <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a></li>
+        <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat</a></li>
+        <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="./app-logo.png" alt="Instant Context">
+        <span class="footer-name">Instant Context</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:support@instantcontext.app">Support</a>
+        <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
+           target="_blank" rel="noopener">Google Play</a>
+      </div>
+
+      <div class="footer-meta" id="footer-version">
+        v1.0.102 &mdash; build 30196 &mdash; &copy; 2026 Instant Context
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fetch('./version.json')
+      .then(function(r) { return r.json(); })
+      .then(function(v) {
+        var nav = document.getElementById('nav-version');
+        var footer = document.getElementById('footer-version');
+        if (nav) nav.textContent = 'v' + v.version;
+        if (footer) footer.textContent = 'v' + v.version + ' \u2014 build ' + v.build + ' \u2014 \u00A9 2026 Instant Context';
+      })
+      .catch(function() {});
+  </script>
+</body>
+</html>
