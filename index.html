@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/site.css">
   <style>
     /* =============================================================
        RESET & BASE
@@ -137,6 +138,110 @@
     .nav-cta:hover { opacity: 0.85; }
 
     /* =============================================================
+       BUTTONS
+    ============================================================= */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      background: var(--cyan);
+      color: #000;
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border-hi);
+      color: var(--cyan);
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: var(--cyan-glow);
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--cyan-dim);
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+    }
+
+    /* =============================================================
+       SECTION TYPOGRAPHY
+    ============================================================= */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-hi);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    /* =============================================================
+       FOOTER
+    ============================================================= */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 48px 24px 36px;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    .footer-brand img { height: 22px; width: auto; opacity: 0.7; }
+    .footer-name { font-size: 0.85rem; font-weight: 600; color: var(--text-mid); }
+
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-lo);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text-mid); }
+
+    .footer-meta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-lo);
+      letter-spacing: 0.5px;
+    }
+
+    /* =============================================================
        ANIMATIONS
     ============================================================= */
     @keyframes scanLine {
@@ -226,43 +331,6 @@
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
-      background: var(--cyan);
-      color: #000;
-      text-decoration: none;
-      border-radius: var(--radius);
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition: opacity 0.15s, transform 0.15s;
-    }
-
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border: 1px solid var(--border-hi);
-      color: var(--cyan);
-      text-decoration: none;
-      border-radius: var(--radius);
-      font-size: 0.9rem;
-      font-weight: 600;
-      background: var(--cyan-glow);
-      transition: background 0.15s, border-color 0.15s, transform 0.15s;
-    }
-
-    .btn-secondary:hover {
-      background: var(--cyan-dim);
-      border-color: var(--cyan);
-      transform: translateY(-1px);
     }
 
     /* =============================================================
@@ -432,25 +500,6 @@
       position: relative;
       z-index: 1;
       padding: 100px 24px;
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--cyan);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: var(--text-hi);
-      line-height: 1.15;
-      margin-bottom: 12px;
     }
 
     .section-sub {
@@ -741,49 +790,7 @@
     }
 
     /* =============================================================
-       FOOTER
-    ============================================================= */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 48px 24px 36px;
-    }
-
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-brand { display: flex; align-items: center; gap: 10px; }
-    .footer-brand img { height: 22px; width: auto; opacity: 0.7; }
-    .footer-name { font-size: 0.85rem; font-weight: 600; color: var(--text-mid); }
-
-    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-
-    .footer-links a {
-      font-size: 0.82rem;
-      color: var(--text-lo);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-links a:hover { color: var(--text-mid); }
-
-    .footer-meta {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-lo);
-      letter-spacing: 0.5px;
-    }
-
-    /* =============================================================
-       RESPONSIVE
+       RESPONSIVE (index-only)
     ============================================================= */
     @media (max-width: 860px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
