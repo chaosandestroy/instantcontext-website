@@ -138,6 +138,55 @@
     .nav-cta:hover { opacity: 0.85; }
 
     /* =============================================================
+       BETA NOTICE BANNER
+    ============================================================= */
+    .beta-notice {
+      position: relative;
+      z-index: 99;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .beta-notice-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .beta-notice-badge {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-top: 2px;
+    }
+
+    .beta-notice-text {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .beta-notice-text strong { color: var(--text-hi); font-weight: 600; }
+
+    .beta-notice-text a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    .beta-notice-text a:hover { text-decoration: underline; }
+
+    /* =============================================================
        BUTTONS
     ============================================================= */
     .btn-primary {
@@ -833,7 +882,7 @@
       <a href="/" class="nav-brand">
         <img src="./app-logo.png" alt="Instant Context">
         <span class="nav-brand-name">Instant Context</span>
-        <span class="nav-pill" id="nav-version">v1.0.131</span>
+        <span class="nav-pill" id="nav-version">v1.0.137</span>
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
          class="nav-cta" target="_blank" rel="noopener">
@@ -841,6 +890,21 @@
       </a>
     </div>
   </nav>
+
+  <!-- OPEN BETA NOTICE (remove when AI narratives are fully restored) -->
+  <div class="beta-notice" role="status" aria-live="polite">
+    <div class="beta-notice-inner">
+      <span class="beta-notice-badge">Beta</span>
+      <p class="beta-notice-text">
+        <strong>Temporary AI limitation.</strong>
+        Scan identification and price tracking are working normally.
+        Detailed AI product descriptions are temporarily limited while we resolve a billing issue with our AI provider.
+        This affects narrative text only — not saving scans or price alerts.
+        Full descriptions should return when our billing cycle resets in early July.
+        Questions? <a href="mailto:support@instantcontext.app">support@instantcontext.app</a>
+      </p>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -923,12 +987,12 @@
         <div class="stat-label">Free scans &mdash; unlimited on Pro</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">&lt;2s</div>
-        <div class="stat-label">AI identification per scan</div>
+        <div class="stat-num">7</div>
+        <div class="stat-label">UI languages supported</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">15m</div>
-        <div class="stat-label">Price check cadence</div>
+        <div class="stat-num">~1h</div>
+        <div class="stat-label">Background price check cadence</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">100%</div>
@@ -1026,15 +1090,15 @@
           <div class="step-num">02 &mdash; IDENTIFY</div>
           <div class="step-title">The app figures it out</div>
           <div class="step-text">
-            It reads the label, text, and packaging to get the exact name, brand,
-            and model &#8212; not just a rough category.
+            Vision reads labels, text, and packaging for the product name and model.
+            AI adds a richer description when available &#8212; not just a rough category.
           </div>
         </div>
         <div class="step">
           <div class="step-num">03 &mdash; TRACK</div>
           <div class="step-title">It works while you don't</div>
           <div class="step-text">
-            Price checks run every 15 minutes automatically. The moment a price
+            Price checks run about once per hour in the background. When a price
             hits your target, you get a notification.
           </div>
         </div>
@@ -1057,7 +1121,7 @@
           <div class="feature-tag">Price Tracking</div>
           <div class="feature-name">Price History Timelines</div>
           <div class="feature-desc">
-            Tell the app what you're willing to pay. It checks every 15 minutes
+            Tell the app what you're willing to pay. It checks about once per hour
             and builds a chart of how the price has moved over time. When it hits
             your number, you get a push notification. See the full history so you
             know whether today's price is actually a deal or just average.
@@ -1148,13 +1212,13 @@
           <div class="tech-card-label">What It Reads</div>
           <h3>It gets the details right</h3>
           <p>
-            The app reads labels, text printed on packaging, logos, and product
-            structure to get the exact name and model &#8212; not just "headphones"
-            or "coffee maker." That precision is what makes price history and
-            search actually useful.
+            Vision reads labels, packaging text, logos, and product structure for
+            identification. AI adds a detailed product story when available &#8212;
+            not just "headphones" or "coffee maker." That precision is what makes
+            price history and search actually useful.
           </p>
           <ul class="tech-list">
-            <li>Brand, model, and version &#8212; not just the category</li>
+            <li>Brand and model from the label, not just the category</li>
             <li>Reads barcodes and product codes from the label</li>
             <li>Pulls every line item off a paper receipt</li>
           </ul>
@@ -1170,8 +1234,8 @@
           </p>
           <ul class="tech-list">
             <li>Works offline, syncs when you reconnect</li>
-            <li>Price checks every 15 minutes, automatically</li>
-            <li>Checks more often the closer a price is to your target</li>
+            <li>Price checks about once per hour, automatically</li>
+            <li>Push notification when a price hits your target</li>
             <li>Your data stays yours &#8212; export or delete any time</li>
           </ul>
         </div>
@@ -1198,6 +1262,7 @@
             <li>Smart Collections</li>
             <li>Receipt Scanning</li>
             <li>Search your history</li>
+            <li>Includes ads</li>
           </ul>
           <a href="https://play.google.com/store/apps/details?id=com.instantcontext.app"
              class="btn-secondary" style="width:100%;justify-content:center;"
@@ -1209,10 +1274,11 @@
         <div class="price-card price-card-featured">
           <div class="price-tier">Pro</div>
           <div class="price-amount">$4.99</div>
-          <div class="price-period">per month &mdash; 7-day free trial</div>
+          <div class="price-period">per month &mdash; or $44.99/yr &mdash; 7-day free trial</div>
           <ul class="price-list">
             <li>Unlimited scans</li>
             <li>20 active price alerts</li>
+            <li>50 instant price checks per month</li>
             <li>Unlimited scan history</li>
             <li>Batch Scanning (Open Beta)</li>
             <li>Voice Search &amp; custom themes (Open Beta)</li>
