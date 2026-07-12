@@ -300,11 +300,11 @@
       <div class="section-label">Legal</div>
       <h1 class="section-title">Privacy Policy</h1>
       <p class="legal-meta">Effective date: December 27, 2025</p>
-      <p class="legal-meta">Last Updated: April 3, 2026</p>
+      <p class="legal-meta">Last Updated: July 12, 2026</p>
     </header>
 
     <div class="legal-card">
-      <p>Instant Context ("the App") is provided by Instant Context. This policy explains what data we collect, how we use it, and the choices you have. The App uses device capabilities (e.g., Camera, Microphone) and third‑party services such as Google AdMob, RevenueCat, and Supabase.</p>
+      <p>Instant Context ("the App") is provided by Instant Context. This policy explains what data we collect, how we use it, and the choices you have. The App uses device capabilities (e.g., Camera, Microphone) and third‑party services such as Google AdMob, RevenueCat, Supabase, Google Cloud Vision, Google Generative AI (Gemini), and SerpApi.</p>
     </div>
 
     <div class="legal-card">
@@ -340,7 +340,7 @@
       <h2>Summary</h2>
       <ul>
         <li>Purpose: Provide core features (camera/microphone capture), display ads, manage subscriptions, and sync data you explicitly submit.</li>
-        <li>Key partners: Google AdMob (ads), RevenueCat (in‑app purchases/subscriptions), Supabase (backend data storage/processing).</li>
+        <li>Key partners: Google AdMob (ads), RevenueCat (in‑app purchases/subscriptions), Supabase (backend data storage/processing), Google Cloud Vision and Google Generative AI / Gemini (scan identification), SerpApi (visual product matching and shopping prices).</li>
         <li>Sensitive permissions: Camera and Microphone are requested to enable features you choose to use.</li>
       </ul>
     </div>
@@ -361,24 +361,37 @@
 
     <div class="legal-card">
       <h2>AI Processing Services</h2>
-      <p>Instant Context uses a dual-AI architecture powered by Google Generative AI ("Gemini") to deliver its core features. When you scan an object:</p>
-      <h3>1. Visual Identification (Google Gemini Pro)</h3>
+      <p>Instant Context uses multiple AI and visual-search providers to identify objects and (when you choose) look up prices. Paid API keys stay on our servers; the App calls Supabase Edge Functions that forward requests on your behalf. When you scan an object while signed in:</p>
+      <h3>1. Visual Analysis (Google Cloud Vision)</h3>
       <ul>
-        <li>Your captured image is transmitted over an encrypted connection to the Google Generative AI API for product identification and visual analysis.</li>
-        <li>Google processes the image data solely to generate a structured identification response. Images are not used by Google to train generative AI models. See <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API Terms</a>.</li>
-        <li>No API keys, device identifiers, or personally identifiable information are included in the image payload.</li>
+        <li>Your captured image is sent over an encrypted connection to a Supabase Edge Function that calls the <strong>Google Cloud Vision API</strong> for labels, logos, on-image text (OCR), and related visual signals used to help identify the subject.</li>
+        <li>Google processes the image to return those analysis results. See <a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank" rel="noopener">Google Cloud Privacy Notice</a>.</li>
+        <li>No Instant Context API keys or advertising identifiers are included in that image payload.</li>
       </ul>
-      <h3>2. Price Matching (Google Gemini Flash &amp; SerpApi)</h3>
+      <h3>2. Identification &amp; Narrative (Google Generative AI / Gemini)</h3>
       <ul>
-        <li>When you use the price comparison feature, a short text query (product name) is sent to a Supabase Edge Function that calls <strong>Google Gemini Flash</strong> for semantic relevance filtering and <strong>SerpApi</strong> (Google Shopping) for live pricing data.</li>
-        <li>Only the product name string is transmitted — no images, user IDs, or personal data are included in these requests.</li>
+        <li>Your captured image (and related scan context) is transmitted over an encrypted connection to a Supabase Edge Function that calls <strong>Google Generative AI ("Gemini")</strong> for product identification and the written summary shown in results.</li>
+        <li>Google processes that data to generate the identification response. Under Google’s current Gemini API terms, images submitted via the API are not used to train Google’s generative models. See <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API Terms</a>.</li>
+        <li>No Instant Context API keys or advertising identifiers are included in that image payload.</li>
+      </ul>
+      <h3>3. Visual Product Matching (SerpApi / Google Lens–style lookup)</h3>
+      <ul>
+        <li>To improve brand and model accuracy, a copy of your scan photo may be uploaded to <strong>Supabase Storage</strong> so it is reachable at a temporary public image URL.</li>
+        <li>That URL (not the raw bytes from your phone in the SerpApi request body) is sent to a Supabase Edge Function that calls <strong>SerpApi</strong>’s Google Lens–compatible visual search engine. SerpApi fetches the image from that URL to return publicly available visual matches (for example, similar product pages and titles).</li>
+        <li>Device language/region settings may be forwarded as locale parameters so results better match your market. See <a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi Legal</a>.</li>
+        <li>If you are not signed in, or if upload/lookup fails, the App continues without this step and falls back to Vision + Gemini identification alone.</li>
+      </ul>
+      <h3>4. Price Matching (Google Gemini &amp; SerpApi Shopping)</h3>
+      <ul>
+        <li>When you use the price comparison feature, a short text query (product name) is sent to a Supabase Edge Function that calls <strong>Google Gemini</strong> for relevance filtering and <strong>SerpApi</strong> (Google Shopping) for live pricing data.</li>
+        <li>Only the product name string is transmitted for that shopping lookup — no scan image is included in the shopping request.</li>
         <li>SerpApi processes the query to return publicly available shopping results. See <a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi Legal</a>.</li>
       </ul>
       <h3>Data Handling Guarantees</h3>
       <ul>
         <li>All API communications use TLS encryption in transit.</li>
-        <li>No raw images or query strings are stored by Instant Context's servers after the response is delivered to your device.</li>
-        <li>Third-party AI providers process data solely to fulfill the API request and do not retain it for model training under their current API terms of service.</li>
+        <li>Scan photos may be retained in your account history (and related storage) as long as needed for History and related features, or until you delete them / your account where applicable.</li>
+        <li>Third-party AI and search providers process data to fulfill the API request. Retention and training practices are governed by each provider’s current terms and privacy policies (linked below).</li>
       </ul>
     </div>
 
@@ -444,6 +457,7 @@
       <p>We may update this policy from time to time. The latest version will be available at this URL.</p>
       <h2>Third‑Party Links</h2>
       <ul>
+        <li><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank" rel="noopener">Google Cloud Privacy Notice</a></li>
         <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Google Gemini API</a></li>
         <li><a href="https://serpapi.com/legal" target="_blank" rel="noopener">SerpApi</a></li>
         <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a></li>
