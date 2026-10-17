@@ -6,7 +6,7 @@
  *
  * Design goals:
  * - FIFO queueing by oldest last_checked_at
- * - 1-hour max drift target (alerts become due every 60 minutes)
+ * - 24-hour due window (alerts become due again after 1440 minutes)
  * - Queue must advance even on scrape/API failures
  * - Per-alert failures are isolated and logged to DB
  */
@@ -78,8 +78,8 @@ const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
 // Constants
 // ---------------------------------------------------------------------------
 
-/** Alerts become due again after 60 minutes. */
-const DUE_WINDOW_MINUTES = Number(Deno.env.get("PRICE_ALERT_DUE_MINUTES") ?? "60");
+/** Alerts become due again after 24 hours. Hourly checks burned the SerpAPI cap. */
+const DUE_WINDOW_MINUTES = Number(Deno.env.get("PRICE_ALERT_DUE_MINUTES") ?? "1440");
 
 /** Throughput tuning: default 20 per run (fits 60s serverless ceiling with parallelism). */
 const DEFAULT_BATCH_LIMIT = Number(Deno.env.get("PRICE_ALERT_BATCH_LIMIT") ?? "20");
